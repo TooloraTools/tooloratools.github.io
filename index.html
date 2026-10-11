@@ -4,112 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TooloraTools - Free Online Tools</title>
-<meta name="description" content="Use free online text case converter, word counter and password generator tools.">
+<meta name="description" content="Use free online tools to convert text, count words and generate secure passwords.">
+<meta name="theme-color" content="#101828">
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
-header{background:#14213d;color:white;text-align:center;padding:32px 15px}
-header h1{margin:0;font-size:34px}
-header p{color:#dbeafe}
-main{max-width:850px;margin:30px auto;padding:15px}
-.intro{text-align:center;margin-bottom:28px}
-.tool{background:white;padding:22px;margin:20px 0;border-radius:14px;box-shadow:0 4px 15px #0000000d}
-.tool h2{color:#2563eb;margin-top:0}
-textarea,input{width:100%;padding:12px;margin:8px 0;border:1px solid #cbd5e1;border-radius:8px;font-size:16px}
-textarea{min-height:120px;resize:vertical}
-button{background:#2563eb;color:white;border:0;padding:11px 15px;border-radius:8px;margin:5px 4px 5px 0;cursor:pointer;font-size:15px}
-button:hover{background:#1d4ed8}
-.result{background:#eff6ff;padding:12px;border-radius:8px;overflow-wrap:anywhere}
-footer{text-align:center;padding:25px;color:#64748b}
-</style>
-</head>
-<body>
-<header>
-<h1>TooloraTools</h1>
-<p>Free Online Tools for Everyone</p>
-</header>
-
-<main>
-<div class="intro">
-<h2>Simple Tools. Easy Life.</h2>
-<p>Free tools to make your daily work easier.</p>
-</div>
-
-<section class="tool">
-<h2>Text Case Converter</h2>
-<p>Enter your text and convert its case.</p>
-<textarea id="caseText" placeholder="Type or paste your text here..."></textarea>
-<button onclick="convertCase('upper')">UPPERCASE</button>
-<button onclick="convertCase('lower')">lowercase</button>
-<button onclick="convertCase('title')">Title Case</button>
-<button onclick="copyText('caseText')">Copy Text</button>
-</section>
-
-<section class="tool">
-<h2>Word Counter</h2>
-<p>Enter text to count words and characters.</p>
-<textarea id="wordText" placeholder="Write or paste text here..." oninput="countWords()"></textarea>
-<div class="result">
-<p>Words: <strong id="words">0</strong></p>
-<p>Characters: <strong id="chars">0</strong></p>
-<p>Characters without spaces: <strong id="noSpaces">0</strong></p>
-</div>
-</section>
-
-<section class="tool">
-<h2>Password Generator</h2>
-<p>Choose a length and create a strong random password.</p>
-<label for="passLength">Password length (8–40)</label>
-<input id="passLength" type="number" min="8" max="40" value="16">
-<button onclick="generatePassword()">Generate Password</button>
-<button onclick="copyPassword()">Copy Password</button>
-<p class="result" id="password">Your password will appear here.</p>
-</section>
-</main>
-
-<footer>© 2026 TooloraTools. All rights reserved.</footer>
-
-<script>
-function convertCase(type){
-const box=document.getElementById('caseText');
-let text=box.value;
-if(type==='upper') text=text.toUpperCase();
-if(type==='lower') text=text.toLowerCase();
-if(type==='title') text=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
-box.value=text;
-}
-function countWords(){
-const text=document.getElementById('wordText').value;
-const words=text.trim()?text.trim().split(/\s+/).length:0;
-document.getElementById('words').textContent=words;
-document.getElementById('chars').textContent=text.length;
-document.getElementById('noSpaces').textContent=text.replace(/\s/g,'').length;
-}
-function generatePassword(){
-const lengthInput=document.getElementById('passLength');
-const length=Math.max(8,Math.min(40,Number(lengthInput.value)||16));
-lengthInput.value=length;
-const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?';
-let password='';
-const randomValues=new Uint32Array(length);
-if(window.crypto&&window.crypto.getRandomValues){
-window.crypto.getRandomValues(randomValues);
-for(let i=0;i<length;i++) password+=chars[randomValues[i]%chars.length];
-}else{
-for(let i=0;i<length;i++) password+=chars[Math.floor(Math.random()*chars.length)];
-}
-document.getElementById('password').textContent=password;
-}
-function copyText(id){
-const box=document.getElementById(id);
-if(!box.value){alert('Please enter some text first.');return;}
-navigator.clipboard.writeText(box.value).then(()=>alert('Text copied!')).catch(()=>alert('Please select and copy the text manually.'));
-}
-function copyPassword(){
-const password=document.getElementById('password').textContent;
-if(password==='Your password will appear here.'){alert('Generate a password first.');return;}
-navigator.clipboard.writeText(password).then(()=>alert('Password copied!')).catch(()=>alert('Please copy the password manually.'));
-}
-</script>
-</body>
-</html>
+:root{--navy:#101828;--blue:#4f46e5;--purple:#7c3aed;--text:#172033;--muted:#667085}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f7fb;color:var(--text);line-height:1.6}
+header{background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);color:white;padding:24px 18px 65px}
+nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:
