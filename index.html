@@ -1,237 +1,307 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TooloraTools offers free online calculators, text tools, QR code generation and useful web utilities.">
 <title>TooloraTools - Free Online Tools</title>
-<meta name="description" content="Free online tools: text case converter, word counter, password generator and QR code generator.">
-
 <style>
+:root{--bg:#0b1020;--card:#151d32;--text:#f4f7ff;--muted:#aab6d0;--accent:#8b7cff;--border:#293550}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f6f7fb;color:#172033;line-height:1.6}
-header{background:linear-gradient(135deg,#101828,#273c75,#4f46e5);color:white;padding:24px 18px 65px}
-nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:bold}
-.logo span{color:#c4b5fd}
-nav a{color:white;text-decoration:none}
-.hero{text-align:center;max-width:800px;margin:45px auto 0}
-.tag{border:1px solid #ffffff55;border-radius:30px;padding:6px 13px;font-size:13px}
-.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.15}
-.hero h1 span{color:#c4b5fd}
-.hero p{color:#e0e7ff;font-size:17px}
-main{max-width:1050px;margin:-30px auto 0;padding:0 18px}
-.section-title{text-align:center;margin:45px 0 25px}
-.section-title h2{font-size:29px;margin-bottom:8px}
-.section-title p,.tool p,.about p{color:#667085}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:22px}
-.tool,.about{background:white;border:1px solid #e8eaf2;border-radius:18px;padding:23px;box-shadow:0 8px 28px #1018280b;min-width:0}
-.tool-icon{width:48px;height:48px;border-radius:14px;background:#eef2ff;color:#4338ca;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:14px}
-.tool h3{margin:0 0 6px;font-size:21px}
-.tool p{font-size:14px}
-textarea,input{display:block;width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:10px;font:inherit;margin:9px 0}
-textarea{min-height:110px;resize:vertical}
-button{border:0;border-radius:9px;background:#4f46e5;color:white;padding:11px 13px;font-size:14px;font-weight:bold;cursor:pointer;margin:5px 4px 4px 0}
-button.secondary{background:#eef2ff;color:#3730a3}
-.result{background:#f8f9fc;border:1px solid #eaecf0;padding:13px;border-radius:10px;margin-top:12px;overflow-wrap:anywhere}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.stat{background:#f8f9fc;border-radius:9px;padding:10px 3px;text-align:center}
-.stat strong{display:block;font-size:22px;color:#4338ca}
-.stat span{font-size:11px;color:#667085}
-label{font-size:13px;font-weight:bold}
-#qrcode{margin-top:15px;display:flex;justify-content:center;overflow-wrap:anywhere}
-#qrcode img,#qrcode canvas{max-width:100%;height:auto}
-.about{text-align:center;margin-top:28px}
-footer{text-align:center;padding:35px 15px;margin-top:30px;background:#101828;color:#cbd5e1;font-size:13px}
-footer strong{color:white}
-@media(max-width:500px){.tool{padding:19px}.hero p{font-size:15px}.logo{font-size:22px}}
+body{margin:0;background:linear-gradient(135deg,#0b1020,#171333);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+header{text-align:center;padding:38px 16px 28px}
+.logo{font-size:32px;font-weight:800;color:#fff}
+.logo span{color:#a99cff}
+header p{color:var(--muted);margin:8px auto;max-width:600px}
+main{max-width:1100px;margin:auto;padding:15px}
+.search{width:100%;padding:14px;border:1px solid var(--border);border-radius:12px;background:#11182a;color:white;font-size:16px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;min-width:0}
+.card h2{font-size:19px;margin:0 0 8px}
+.card p{color:var(--muted);font-size:14px}
+input,textarea,select{width:100%;padding:11px;margin:6px 0;border-radius:9px;border:1px solid #354361;background:#0d1426;color:white;font-size:15px}
+button{border:0;border-radius:9px;padding:11px 15px;background:var(--accent);color:white;font-weight:bold;cursor:pointer;margin:5px 3px 5px 0}
+button:hover{opacity:.85}
+.result{margin-top:12px;padding:10px;background:#0d1426;border-radius:9px;overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:13px}
+#qr img{max-width:100%;background:white;padding:8px;border-radius:8px}
+.hidden{display:none}
+footer{text-align:center;padding:30px 12px;color:var(--muted);font-size:13px}
+a{color:#b9b0ff}
 </style>
 </head>
-
 <body>
 <header>
-<nav>
-<div class="logo">Toolora<span>Tools</span></div>
-<a href="#tools">Explore Tools ↓</a>
-</nav>
-<div class="hero">
-<div class="tag">✦ Free Online Tools</div>
-<h1>Small Tools.<br><span>Big Possibilities.</span></h1>
-<p>Useful, simple and free tools to make your everyday work faster and easier.</p>
-</div>
+  <div class="logo">Toolora<span>Tools</span></div>
+  <p>Free, simple and useful online tools — works on your mobile too.</p>
+  <p>Calculators • Text Tools • QR Codes • Generators</p>
 </header>
 
 <main>
-<div class="section-title" id="tools">
-<h2>Explore Our Tools</h2>
-<p>Choose a tool and get your work done in seconds.</p>
-</div>
+<input id="search" class="search" placeholder="Search a tool..." oninput="filterTools()">
 
-<div class="tools-grid">
+<div class="grid" id="tools">
 
-<section class="tool">
-<div class="tool-icon">Aa</div>
-<h3>Text Case Converter</h3>
-<p>Convert text to uppercase, lowercase or title case.</p>
-<textarea id="caseText" placeholder="Type or paste your text here..."></textarea>
+<section class="card" data-name="text case converter">
+<h2>🔠 Text Case Converter</h2>
+<textarea id="caseText" rows="3" placeholder="Enter your text"></textarea>
 <button onclick="convertCase('upper')">UPPERCASE</button>
-<button class="secondary" onclick="convertCase('lower')">lowercase</button>
-<button class="secondary" onclick="convertCase('title')">Title Case</button>
-<button class="secondary" onclick="copyText('caseText')">Copy Text</button>
+<button onclick="convertCase('lower')">lowercase</button>
+<button onclick="convertCase('title')">Title Case</button>
+<div class="result" id="caseResult">Your result appears here.</div>
+<button onclick="copyText('caseResult')">Copy Result</button>
 </section>
 
-<section class="tool">
-<div class="tool-icon">≡</div>
-<h3>Word Counter</h3>
-<p>Count words and characters instantly.</p>
-<textarea id="wordText" placeholder="Write or paste your text here..." oninput="countWords()"></textarea>
-<div class="stats">
-<div class="stat"><strong id="words">0</strong><span>Words</span></div>
-<div class="stat"><strong id="chars">0</strong><span>Characters</span></div>
-<div class="stat"><strong id="noSpaces">0</strong><span>No Spaces</span></div>
+<section class="card" data-name="word counter character counter">
+<h2>📝 Word Counter</h2>
+<textarea id="wordText" rows="4" placeholder="Type or paste text..." oninput="countWords()"></textarea>
+<div class="result" id="wordResult">Words: 0 | Characters: 0 | No spaces: 0</div>
+</section>
+
+<section class="card" data-name="password generator">
+<h2>🔐 Password Generator</h2>
+<label>Password length</label>
+<input type="number" id="passLength" value="16" min="4" max="64">
+<label><input type="checkbox" id="passSymbols" checked style="width:auto"> Include symbols</label>
+<button onclick="makePassword()">Generate Password</button>
+<div class="result" id="passResult">Your password appears here.</div>
+<button onclick="copyText('passResult')">Copy Password</button>
+</section>
+
+<section class="card" data-name="qr code generator">
+<h2>📱 QR Code Generator</h2>
+<p>Enter a website link or text to make a QR code.</p>
+<input id="qrText" placeholder="https://example.com">
+<button onclick="makeQR()">Generate QR Code</button>
+<div class="result" id="qr">Your QR code will appear here.</div>
+<p class="muted">QR generation requires an internet connection.</p>
+</section>
+
+<section class="card" data-name="age calculator">
+<h2>🎂 Age Calculator</h2>
+<label>Your date of birth</label>
+<input type="date" id="birthDate">
+<button onclick="calculateAge()">Calculate Age</button>
+<div class="result" id="ageResult">Your age appears here.</div>
+</section>
+
+<section class="card" data-name="percentage calculator">
+<h2>📊 Percentage Calculator</h2>
+<input type="number" id="percentPart" placeholder="Your number (e.g. 25)">
+<input type="number" id="percentTotal" placeholder="Total number (e.g. 200)">
+<button onclick="calculatePercentage()">Calculate Percentage</button>
+<div class="result" id="percentResult">Result appears here.</div>
+</section>
+
+<section class="card" data-name="unit converter length">
+<h2>📏 Length Converter</h2>
+<input type="number" id="lengthValue" placeholder="Enter a value">
+<select id="lengthFrom">
+<option value="m">Meters</option>
+<option value="km">Kilometers</option>
+<option value="cm">Centimeters</option>
+<option value="mm">Millimeters</option>
+<option value="mi">Miles</option>
+<option value="ft">Feet</option>
+<option value="in">Inches</option>
+</select>
+<select id="lengthTo">
+<option value="ft">Feet</option>
+<option value="m">Meters</option>
+<option value="km">Kilometers</option>
+<option value="cm">Centimeters</option>
+<option value="mm">Millimeters</option>
+<option value="mi">Miles</option>
+<option value="in">Inches</option>
+</select>
+<button onclick="convertLength()">Convert</button>
+<div class="result" id="lengthResult">Converted value appears here.</div>
+</section>
+
+<section class="card" data-name="loan calculator">
+<h2>🏦 Loan Calculator</h2>
+<input type="number" id="loanAmount" placeholder="Loan amount">
+<input type="number" id="loanRate" placeholder="Annual interest rate (%)">
+<input type="number" id="loanYears" placeholder="Loan duration (years)">
+<button onclick="calculateLoan()">Calculate Monthly Payment</button>
+<div class="result" id="loanResult">Monthly payment appears here.</div>
+<p class="muted">Estimate only. Fees and actual lender terms may differ.</p>
+</section>
+
+<section class="card" data-name="invoice generator">
+<h2>🧾 Simple Invoice Generator</h2>
+<input id="invBusiness" placeholder="Business name">
+<input id="invCustomer" placeholder="Customer name">
+<input id="invItem" placeholder="Product or service">
+<input type="number" id="invQty" placeholder="Quantity" value="1" min="1">
+<input type="number" id="invPrice" placeholder="Price per item">
+<button onclick="makeInvoice()">Create Invoice</button>
+<div class="result" id="invoiceResult">Your invoice appears here.</div>
+<button onclick="printInvoice()">Print / Save PDF</button>
+</section>
+
 </div>
-</section>
+<p id="noTools" class="hidden">No tools found.</p>
 
-<section class="tool">
-<div class="tool-icon">🔐</div>
-<h3>Password Generator</h3>
-<p>Generate a random password for your accounts.</p>
-<label for="passLength">Password length (8–40)</label>
-<input id="passLength" type="number" min="8" max="40" value="16">
-<button onclick="generatePassword()">Generate Password</button>
-<button class="secondary" onclick="copyPassword()">Copy Password</button>
-<div class="result" id="password">Your password will appear here.</div>
-</section>
-
-<section class="tool">
-<div class="tool-icon">▦</div>
-<h3>QR Code Generator</h3>
-<p>Enter a website link or text to create your own QR code.</p>
-<input id="qrText" type="text" placeholder="Enter a link or text">
-<button onclick="generateQR()">Generate QR Code</button>
-<button class="secondary" onclick="downloadQR()">Download QR</button>
-<div id="qrcode"></div>
-<p id="qrMessage"></p>
-</section>
-
-</div>
-
-<section class="about">
-<h2>Why TooloraTools?</h2>
-<p>Our goal is to provide simple and useful online tools that everyone can use for free, without unnecessary complications.</p>
+<section class="card" style="margin-top:22px">
+<h2>✨ Why TooloraTools?</h2>
+<p>Simple online tools designed for everyday tasks. Use them on your phone or computer without installing an app.</p>
 </section>
 </main>
 
 <footer>
-<strong>TooloraTools</strong><br>
-Free Online Tools for Everyone<br>
-© 2026 TooloraTools. All rights reserved.
+<p>© <span id="year"></span> TooloraTools. All rights reserved.</p>
+<p>Free tools for everyday use.</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
+const $ = id => document.getElementById(id);
+
 function convertCase(type){
-const box=document.getElementById('caseText');
-let text=box.value;
-if(type==='upper')text=text.toUpperCase();
-if(type==='lower')text=text.toLowerCase();
-if(type==='title')text=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
-box.value=text;
+  const text=$("caseText").value;
+  let out=text;
+  if(type==="upper") out=text.toUpperCase();
+  if(type==="lower") out=text.toLowerCase();
+  if(type==="title") out=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+  $("caseResult").textContent=out || "Please enter some text.";
 }
 
 function countWords(){
-const text=document.getElementById('wordText').value;
-document.getElementById('words').textContent=text.trim()?text.trim().split(/\s+/).length:0;
-document.getElementById('chars').textContent=text.length;
-document.getElementById('noSpaces').textContent=text.replace(/\s/g,'').length;
+  const t=$("wordText").value;
+  const words=t.trim()?t.trim().split(/\s+/).length:0;
+  $("wordResult").textContent=`Words: ${words} | Characters: ${t.length} | No spaces: ${t.replace(/\s/g,"").length}`;
 }
 
-function generatePassword(){
-const input=document.getElementById('passLength');
-const length=Math.max(8,Math.min(40,Number(input.value)||16));
-input.value=length;
-const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?';
-const values=new Uint32Array(length);
-if(!window.crypto||!window.crypto.getRandomValues){
-document.getElementById('password').textContent='Secure generation is not supported by this browser.';
-return;
-}
-window.crypto.getRandomValues(values);
-let password='';
-for(let i=0;i<length;i++)password+=chars[values[i]%chars.length];
-document.getElementById('password').textContent=password;
+function makePassword(){
+  const len=Math.max(4,Math.min(64,Number($("passLength").value)||16));
+  let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  if($("passSymbols").checked) chars+="!@#$%^&*()-_=+?";
+  let out="";
+  const bytes=new Uint32Array(len);
+  if(window.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+  else for(let i=0;i<len;i++) bytes[i]=Math.floor(Math.random()*100000);
+  for(let i=0;i<len;i++) out+=chars[bytes[i]%chars.length];
+  $("passResult").textContent=out;
 }
 
-function generateQR(){
-const text=document.getElementById('qrText').value.trim();
-const area=document.getElementById('qrcode');
-const message=document.getElementById('qrMessage');
-area.innerHTML='';
-message.textContent='';
-
-if(!text){
-message.textContent='Please enter a link or text first.';
-return;
+function makeQR(){
+  const value=$("qrText").value.trim();
+  if(!value){$("qr").textContent="Please enter a link or text.";return;}
+  $("qr").innerHTML="";
+  const img=document.createElement("img");
+  img.alt="Generated QR Code";
+  img.src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+encodeURIComponent(value);
+  img.onload=()=>{const a=document.createElement("a");a.href=img.src;a.download="tooloratools-qr.png";a.textContent="Download QR Code";a.style.display="block";a.style.marginTop="10px";$("qr").appendChild(a);};
+  img.onerror=()=>$("qr").textContent="QR code could not load. Check your internet connection.";
+  $("qr").appendChild(img);
 }
 
-if(typeof QRCode==='undefined'){
-message.textContent='QR tool could not load. Please check your internet connection and try again.';
-return;
+function calculateAge(){
+  const value=$("birthDate").value;
+  if(!value){$("ageResult").textContent="Please select your date of birth.";return;}
+  const birth=new Date(value+"T00:00:00");
+  const now=new Date();
+  if(birth>now){$("ageResult").textContent="Date of birth cannot be in the future.";return;}
+  let years=now.getFullYear()-birth.getFullYear();
+  let months=now.getMonth()-birth.getMonth();
+  let days=now.getDate()-birth.getDate();
+  if(days<0){months--;days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+  if(months<0){years--;months+=12;}
+  $("ageResult").textContent=`Your age is ${years} years, ${months} months and ${days} days.`;
 }
 
-new QRCode(area,{
-text:text,
-width:200,
-height:200,
-correctLevel:QRCode.CorrectLevel.H
-});
+function calculatePercentage(){
+  const a=Number($("percentPart").value);
+  const b=Number($("percentTotal").value);
+  if($("percentPart").value===""||$("percentTotal").value===""||b===0){
+    $("percentResult").textContent="Enter both numbers; total must not be zero.";return;
+  }
+  $("percentResult").textContent=`${a} is ${(a/b*100).toFixed(2)}% of ${b}.`;
 }
 
-function downloadQR(){
-const area=document.getElementById('qrcode');
-const canvas=area.querySelector('canvas');
-const img=area.querySelector('img');
-let url='';
-
-if(canvas)url=canvas.toDataURL('image/png');
-else if(img&&img.src)url=img.src;
-
-if(!url){
-alert('Please generate a QR code first.');
-return;
+function convertLength(){
+  const factors={m:1,km:1000,cm:.01,mm:.001,mi:1609.344,ft:.3048,in:.0254};
+  const v=Number($("lengthValue").value);
+  if($("lengthValue").value===""){ $("lengthResult").textContent="Enter a value.";return;}
+  const result=v*factors[$("lengthFrom").value]/factors[$("lengthTo").value];
+  $("lengthResult").textContent=`Result: ${Number(result.toFixed(8))} ${$("lengthTo").value}`;
 }
 
-const link=document.createElement('a');
-link.href=url;
-link.download='tooloratools-qr.png';
-document.body.appendChild(link);
-link.click();
-link.remove();
+function calculateLoan(){
+  const p=Number($("loanAmount").value);
+  const annual=Number($("loanRate").value);
+  const years=Number($("loanYears").value);
+  if(p<=0||years<=0||$("loanAmount").value===""||$("loanRate").value===""||$("loanYears").value===""){
+    $("loanResult").textContent="Enter a positive loan amount and duration, and an interest rate.";return;
+  }
+  const n=years*12, r=annual/1200;
+  const payment=r===0?p/n:p*r/(1-Math.pow(1+r,-n));
+  $("loanResult").textContent=`Estimated monthly payment: ${payment.toLocaleString(undefined,{maximumFractionDigits:2})} | Total: ${(payment*n).toLocaleString(undefined,{maximumFractionDigits:2})}`;
+}
+
+function makeInvoice(){
+  const business=$("invBusiness").value.trim()||"Business";
+  const customer=$("invCustomer").value.trim()||"Customer";
+  const item=$("invItem").value.trim()||"Item";
+  const qty=Number($("invQty").value);
+  const price=Number($("invPrice").value);
+  if(qty<=0||$("invPrice").value===""||price<0){
+    $("invoiceResult").textContent="Enter a valid quantity and price.";return;
+  }
+  const total=qty*price;
+  $("invoiceResult").innerHTML="";
+  const lines=[
+    "INVOICE",
+    "Business: "+business,
+    "Customer: "+customer,
+    "Item: "+item,
+    "Quantity: "+qty,
+    "Unit price: "+price.toFixed(2),
+    "TOTAL: "+total.toFixed(2)
+  ];
+  lines.forEach(line=>{
+    const div=document.createElement("div");
+    div.textContent=line;
+    $("invoiceResult").appendChild(div);
+  });
+}
+
+function printInvoice(){
+  const content=$("invoiceResult").innerText;
+  if(!content||content.includes("Your invoice appears here")){
+    alert("Create an invoice first.");return;
+  }
+  const w=window.open("","_blank");
+  if(!w){alert("Allow pop-ups to print the invoice.");return;}
+  w.document.write("<!DOCTYPE html><html><head><title>Invoice</title></head><body><pre style='font:16px Arial;white-space:pre-wrap'></pre></body></html>");
+  w.document.body.querySelector("pre").textContent=content;
+  w.document.close();
+  w.focus();
+  w.print();
 }
 
 function copyText(id){
-const box=document.getElementById(id);
-if(!box.value){alert('Please enter some text first.');return;}
-copyValue(box.value);
+  const text=$(id).innerText;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(()=>alert("Copied!")).catch(()=>alert("Please select and copy the result manually."));
+  }else{
+    alert("Please select and copy the result manually.");
+  }
 }
 
-function copyPassword(){
-const value=document.getElementById('password').textContent;
-if(value==='Your password will appear here.'||value.startsWith('Secure generation')){
-alert('Generate a password first.');
-return;
-}
-copyValue(value);
+function filterTools(){
+  const q=$("search").value.toLowerCase();
+  let shown=0;
+  document.querySelectorAll("#tools .card").forEach(card=>{
+    const match=(card.dataset.name+" "+card.innerText).toLowerCase().includes(q);
+    card.style.display=match?"":"none";
+    if(match)shown++;
+  });
+  $("noTools").classList.toggle("hidden",shown!==0);
 }
 
-async function copyValue(value){
-try{
-await navigator.clipboard.writeText(value);
-alert('Copied successfully!');
-}catch(e){
-alert('Copy is unavailable. Please select and copy the text manually.');
-}
-}
+$("year").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
