@@ -4,52 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TooloraTools - Free Online Tools</title>
-<meta name="description" content="Use free online tools to convert text, count words and generate secure passwords.">
-<meta name="theme-color" content="#101828">
+<meta name="description" content="Free online tools: text case converter, word counter, password generator and QR code generator.">
+
 <style>
 *{box-sizing:border-box}
-:root{--navy:#101828;--blue:#4f46e5;--purple:#7c3aed;--text:#172033;--muted:#667085}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f7fb;color:var(--text);line-height:1.6}
-header{background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);color:white;padding:24px 18px 65px}
-nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:25px;font-weight:800;letter-spacing:-.6px}
-.logo span{color:#a5b4fc}
-nav a{color:white;text-decoration:none;font-size:14px}
-.hero{max-width:850px;margin:48px auto 0;text-align:center}
-.tag{display:inline-block;padding:6px 13px;border:1px solid #ffffff45;border-radius:30px;background:#ffffff12;font-size:13px}
-.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.12;margin:20px 0 15px;letter-spacing:-1.5px}
+body{margin:0;font-family:Arial,sans-serif;background:#f6f7fb;color:#172033;line-height:1.6}
+header{background:linear-gradient(135deg,#101828,#273c75,#4f46e5);color:white;padding:24px 18px 65px}
+nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold}
+.logo span{color:#c4b5fd}
+nav a{color:white;text-decoration:none}
+.hero{text-align:center;max-width:800px;margin:45px auto 0}
+.tag{border:1px solid #ffffff55;border-radius:30px;padding:6px 13px;font-size:13px}
+.hero h1{font-size:clamp(34px,6vw,55px);line-height:1.15}
 .hero h1 span{color:#c4b5fd}
-.hero p{color:#e0e7ff;font-size:17px;max-width:600px;margin:0 auto}
+.hero p{color:#e0e7ff;font-size:17px}
 main{max-width:1050px;margin:-30px auto 0;padding:0 18px}
 .section-title{text-align:center;margin:45px 0 25px}
-.section-title h2{font-size:29px;margin:0 0 8px}
-.section-title p{color:var(--muted);margin:0}
+.section-title h2{font-size:29px;margin-bottom:8px}
+.section-title p,.tool p,.about p{color:#667085}
 .tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:22px}
-.tool{background:white;border:1px solid #e8eaf2;border-radius:18px;padding:25px;box-shadow:0 8px 28px #1018280b;min-width:0}
-.tool-icon{width:48px;height:48px;border-radius:14px;background:#eef2ff;color:#4338ca;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
-.tool h3{font-size:21px;margin:0 0 6px}
-.tool p{font-size:14px;color:var(--muted);margin:0 0 16px}
-textarea,input{display:block;width:100%;padding:13px;border:1px solid #d0d5dd;border-radius:10px;background:#fff;font:inherit;font-size:15px;margin:9px 0;outline:none}
-textarea{min-height:115px;resize:vertical}
-textarea:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4f46e51c}
-button{border:0;border-radius:9px;background:var(--blue);color:white;padding:11px 14px;font-size:14px;font-weight:700;cursor:pointer;margin:5px 4px 4px 0}
-button:hover{background:#3730a3}
+.tool,.about{background:white;border:1px solid #e8eaf2;border-radius:18px;padding:23px;box-shadow:0 8px 28px #1018280b;min-width:0}
+.tool-icon{width:48px;height:48px;border-radius:14px;background:#eef2ff;color:#4338ca;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:14px}
+.tool h3{margin:0 0 6px;font-size:21px}
+.tool p{font-size:14px}
+textarea,input{display:block;width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:10px;font:inherit;margin:9px 0}
+textarea{min-height:110px;resize:vertical}
+button{border:0;border-radius:9px;background:#4f46e5;color:white;padding:11px 13px;font-size:14px;font-weight:bold;cursor:pointer;margin:5px 4px 4px 0}
 button.secondary{background:#eef2ff;color:#3730a3}
-button.secondary:hover{background:#e0e7ff}
 .result{background:#f8f9fc;border:1px solid #eaecf0;padding:13px;border-radius:10px;margin-top:12px;overflow-wrap:anywhere}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.stat{background:#f8f9fc;border-radius:9px;padding:10px 4px;text-align:center}
+.stat{background:#f8f9fc;border-radius:9px;padding:10px 3px;text-align:center}
 .stat strong{display:block;font-size:22px;color:#4338ca}
-.stat span{font-size:11px;color:var(--muted)}
-label{font-size:13px;font-weight:700}
-#password{font-family:monospace;font-size:16px;min-height:50px}
-.about{background:white;border:1px solid #e8eaf2;border-radius:18px;padding:25px;margin-top:28px;text-align:center}
-.about p{color:var(--muted);max-width:650px;margin:8px auto}
+.stat span{font-size:11px;color:#667085}
+label{font-size:13px;font-weight:bold}
+#qrcode{margin-top:15px;display:flex;justify-content:center;overflow-wrap:anywhere}
+#qrcode img,#qrcode canvas{max-width:100%;height:auto}
+.about{text-align:center;margin-top:28px}
 footer{text-align:center;padding:35px 15px;margin-top:30px;background:#101828;color:#cbd5e1;font-size:13px}
 footer strong{color:white}
-@media(max-width:500px){header{padding-bottom:55px}.hero{margin-top:38px}.hero p{font-size:15px}.tool{padding:19px}.section-title h2{font-size:25px}.logo{font-size:22px}}
+@media(max-width:500px){.tool{padding:19px}.hero p{font-size:15px}.logo{font-size:22px}}
 </style>
 </head>
+
 <body>
 <header>
 <nav>
@@ -70,10 +67,11 @@ footer strong{color:white}
 </div>
 
 <div class="tools-grid">
+
 <section class="tool">
 <div class="tool-icon">Aa</div>
 <h3>Text Case Converter</h3>
-<p>Convert your text into uppercase, lowercase or title case.</p>
+<p>Convert text to uppercase, lowercase or title case.</p>
 <textarea id="caseText" placeholder="Type or paste your text here..."></textarea>
 <button onclick="convertCase('upper')">UPPERCASE</button>
 <button class="secondary" onclick="convertCase('lower')">lowercase</button>
@@ -84,7 +82,7 @@ footer strong{color:white}
 <section class="tool">
 <div class="tool-icon">≡</div>
 <h3>Word Counter</h3>
-<p>Count words and characters instantly as you type.</p>
+<p>Count words and characters instantly.</p>
 <textarea id="wordText" placeholder="Write or paste your text here..." oninput="countWords()"></textarea>
 <div class="stats">
 <div class="stat"><strong id="words">0</strong><span>Words</span></div>
@@ -103,6 +101,18 @@ footer strong{color:white}
 <button class="secondary" onclick="copyPassword()">Copy Password</button>
 <div class="result" id="password">Your password will appear here.</div>
 </section>
+
+<section class="tool">
+<div class="tool-icon">▦</div>
+<h3>QR Code Generator</h3>
+<p>Enter a website link or text to create your own QR code.</p>
+<input id="qrText" type="text" placeholder="Enter a link or text">
+<button onclick="generateQR()">Generate QR Code</button>
+<button class="secondary" onclick="downloadQR()">Download QR</button>
+<div id="qrcode"></div>
+<p id="qrMessage"></p>
+</section>
+
 </div>
 
 <section class="about">
@@ -117,6 +127,8 @@ Free Online Tools for Everyone<br>
 © 2026 TooloraTools. All rights reserved.
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
 function convertCase(type){
 const box=document.getElementById('caseText');
@@ -126,12 +138,14 @@ if(type==='lower')text=text.toLowerCase();
 if(type==='title')text=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
 box.value=text;
 }
+
 function countWords(){
 const text=document.getElementById('wordText').value;
 document.getElementById('words').textContent=text.trim()?text.trim().split(/\s+/).length:0;
 document.getElementById('chars').textContent=text.length;
 document.getElementById('noSpaces').textContent=text.replace(/\s/g,'').length;
 }
+
 function generatePassword(){
 const input=document.getElementById('passLength');
 const length=Math.max(8,Math.min(40,Number(input.value)||16));
@@ -147,16 +161,69 @@ let password='';
 for(let i=0;i<length;i++)password+=chars[values[i]%chars.length];
 document.getElementById('password').textContent=password;
 }
+
+function generateQR(){
+const text=document.getElementById('qrText').value.trim();
+const area=document.getElementById('qrcode');
+const message=document.getElementById('qrMessage');
+area.innerHTML='';
+message.textContent='';
+
+if(!text){
+message.textContent='Please enter a link or text first.';
+return;
+}
+
+if(typeof QRCode==='undefined'){
+message.textContent='QR tool could not load. Please check your internet connection and try again.';
+return;
+}
+
+new QRCode(area,{
+text:text,
+width:200,
+height:200,
+correctLevel:QRCode.CorrectLevel.H
+});
+}
+
+function downloadQR(){
+const area=document.getElementById('qrcode');
+const canvas=area.querySelector('canvas');
+const img=area.querySelector('img');
+let url='';
+
+if(canvas)url=canvas.toDataURL('image/png');
+else if(img&&img.src)url=img.src;
+
+if(!url){
+alert('Please generate a QR code first.');
+return;
+}
+
+const link=document.createElement('a');
+link.href=url;
+link.download='tooloratools-qr.png';
+document.body.appendChild(link);
+link.click();
+link.remove();
+}
+
 function copyText(id){
 const box=document.getElementById(id);
 if(!box.value){alert('Please enter some text first.');return;}
 copyValue(box.value);
 }
+
 function copyPassword(){
 const value=document.getElementById('password').textContent;
-if(value==='Your password will appear here.'||value.startsWith('Secure generation')){alert('Generate a password first.');return;}
+if(value==='Your password will appear here.'||value.startsWith('Secure generation')){
+alert('Generate a password first.');
+return;
+}
 copyValue(value);
 }
+
 async function copyValue(value){
 try{
 await navigator.clipboard.writeText(value);
