@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="Fmk6bPd1yJ33xgq1OmBfytFgyLr6K34Fe-PZAdzkvZU" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TooloraTools - Free Online Tools</title>
@@ -67,7 +68,6 @@ header{padding-bottom:55px}
 }
 </style>
 </head>
-  <meta name="google-site-verification" content="Fmk6bPd1yJ33xgq1OmBfytFgyLr6K34Fe-PZAdzkvZU" />
 <body>
 <header>
 <nav>
@@ -80,16 +80,12 @@ header{padding-bottom:55px}
 <p>Useful, simple and free tools to make your everyday work faster and easier.</p>
 </div>
 </header>
-
 <main>
 <div class="section-title" id="tools">
 <h2>Explore Our Tools</h2>
 <p>Choose a tool and get your work done in seconds.</p>
 </div>
-
 <div class="tools-grid">
-
-<!-- 1. TEXT CASE CONVERTER -->
 <section class="tool">
 <div class="tool-icon">Aa</div>
 <h3>Text Case Converter</h3>
@@ -100,8 +96,6 @@ header{padding-bottom:55px}
 <button class="secondary" onclick="convertCase('title')">Title Case</button>
 <button class="secondary" onclick="copyText('caseText')">Copy Text</button>
 </section>
-
-<!-- 2. WORD COUNTER -->
 <section class="tool">
 <div class="tool-icon">≡</div>
 <h3>Word Counter</h3>
@@ -113,8 +107,6 @@ header{padding-bottom:55px}
 <div class="stat"><strong id="noSpaces">0</strong><span>No Spaces</span></div>
 </div>
 </section>
-
-<!-- 3. PASSWORD GENERATOR -->
 <section class="tool">
 <div class="tool-icon">🔐</div>
 <h3>Password Generator</h3>
@@ -125,8 +117,6 @@ header{padding-bottom:55px}
 <button class="secondary" onclick="copyPassword()">Copy Password</button>
 <div class="result" id="password">Your password will appear here.</div>
 </section>
-
-<!-- 4. QR CODE GENERATOR -->
 <section class="tool">
 <div class="tool-icon">▦</div>
 <h3>QR Code Generator</h3>
@@ -136,8 +126,6 @@ header{padding-bottom:55px}
 <div class="result qr-output" id="qrResult">Your QR code will appear here.</div>
 <p class="small-note">Internet connection is required to create the QR image.</p>
 </section>
-
-<!-- 5. AGE CALCULATOR -->
 <section class="tool">
 <div class="tool-icon">🎂</div>
 <h3>Age Calculator</h3>
@@ -147,8 +135,6 @@ header{padding-bottom:55px}
 <button onclick="calculateAge()">Calculate Age</button>
 <div class="result" id="ageResult">Your age will appear here.</div>
 </section>
-
-<!-- 6. PERCENTAGE CALCULATOR -->
 <section class="tool">
 <div class="tool-icon">％</div>
 <h3>Percentage Calculator</h3>
@@ -160,8 +146,6 @@ header{padding-bottom:55px}
 <button onclick="calculatePercentage()">Calculate Percentage</button>
 <div class="result" id="percentResult">Your result will appear here.</div>
 </section>
-
-<!-- 7. LENGTH CONVERTER -->
 <section class="tool">
 <div class="tool-icon">📏</div>
 <h3>Length Converter</h3>
@@ -191,8 +175,6 @@ header{padding-bottom:55px}
 <button onclick="convertLength()">Convert Length</button>
 <div class="result" id="lengthResult">1 meter = 39.3701 inches</div>
 </section>
-
-<!-- 8. LOAN CALCULATOR -->
 <section class="tool">
 <div class="tool-icon">💰</div>
 <h3>Loan Calculator</h3>
@@ -207,8 +189,6 @@ header{padding-bottom:55px}
 <div class="result" id="loanResult">Your estimated payment will appear here.</div>
 <p class="small-note">Estimate only. Actual bank charges and fees may differ.</p>
 </section>
-
-<!-- 9. INVOICE GENERATOR -->
 <section class="tool">
 <div class="tool-icon">🧾</div>
 <h3>Simple Invoice Generator</h3>
@@ -225,25 +205,19 @@ header{padding-bottom:55px}
 <input id="invoicePrice" type="number" min="0" step="any" placeholder="e.g. 1500">
 <button onclick="generateInvoice()">Create Invoice</button>
 <button class="secondary" onclick="printInvoice()">Print / Save PDF</button>
-<div class="invoice-preview" id="invoiceResult">
-Your invoice will appear here.
-</div>
+<div class="invoice-preview" id="invoiceResult">Your invoice will appear here.</div>
 </section>
-
 </div>
-
 <section class="about">
 <h2>Why TooloraTools?</h2>
 <p>Our goal is to provide simple and useful online tools that everyone can use for free, without unnecessary complications.</p>
 </section>
 </main>
-
 <footer>
 <strong>TooloraTools</strong><br>
 Free Online Tools for Everyone<br>
 © 2026 TooloraTools. All rights reserved.
 </footer>
-
 <script>
 function convertCase(type){
 const box=document.getElementById('caseText');
@@ -253,14 +227,12 @@ if(type==='lower')text=text.toLowerCase();
 if(type==='title')text=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
 box.value=text;
 }
-
 function countWords(){
 const text=document.getElementById('wordText').value;
 document.getElementById('words').textContent=text.trim()?text.trim().split(/\s+/).length:0;
 document.getElementById('chars').textContent=text.length;
 document.getElementById('noSpaces').textContent=text.replace(/\s/g,'').length;
 }
-
 function generatePassword(){
 const input=document.getElementById('passLength');
 const length=Math.max(8,Math.min(40,Number(input.value)||16));
@@ -276,202 +248,102 @@ let password='';
 for(let i=0;i<length;i++)password+=chars[values[i]%chars.length];
 document.getElementById('password').textContent=password;
 }
-
 function generateQR(){
 const text=document.getElementById('qrText').value.trim();
 const result=document.getElementById('qrResult');
-if(!text){
-result.textContent='Please enter text or a website URL first.';
-return;
-}
+if(!text){result.textContent='Please enter text or a website URL first.';return;}
 result.innerHTML='';
 const img=document.createElement('img');
-img.alt='Generated QR Code';
-img.width=220;
-img.height=220;
+img.alt='Generated QR Code';img.width=220;img.height=220;
 img.src='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='+encodeURIComponent(text);
-img.onerror=function(){
-result.textContent='Could not load the QR code. Please check your internet connection and try again.';
-};
+img.onerror=function(){result.textContent='Could not load the QR code. Please check your internet connection and try again.';};
 result.appendChild(img);
 const link=document.createElement('a');
-link.href=img.src;
-link.target='_blank';
-link.rel='noopener';
-link.textContent='Open QR image';
-link.style.display='block';
-link.style.marginTop='10px';
+link.href=img.src;link.target='_blank';link.rel='noopener';
+link.textContent='Open QR image';link.style.display='block';link.style.marginTop='10px';
 result.appendChild(link);
 }
-
 function calculateAge(){
 const value=document.getElementById('birthDate').value;
 const result=document.getElementById('ageResult');
-if(!value){
-result.textContent='Please select your date of birth.';
-return;
-}
+if(!value){result.textContent='Please select your date of birth.';return;}
 const birth=new Date(value+'T00:00:00');
-const today=new Date();
-today.setHours(0,0,0,0);
-if(Number.isNaN(birth.getTime())||birth>today){
-result.textContent='Please enter a valid date that is not in the future.';
-return;
-}
+const today=new Date();today.setHours(0,0,0,0);
+if(Number.isNaN(birth.getTime())||birth>today){result.textContent='Please enter a valid date that is not in the future.';return;}
 let years=today.getFullYear()-birth.getFullYear();
 let months=today.getMonth()-birth.getMonth();
 let days=today.getDate()-birth.getDate();
-if(days<0){
-months--;
-const previousMonth=new Date(today.getFullYear(),today.getMonth(),0);
-days+=previousMonth.getDate();
-}
-if(months<0){
-years--;
-months+=12;
-}
+if(days<0){months--;const previousMonth=new Date(today.getFullYear(),today.getMonth(),0);days+=previousMonth.getDate();}
+if(months<0){years--;months+=12;}
 result.textContent=years+' years, '+months+' months and '+days+' days';
 }
-
 function calculatePercentage(){
-const a=Number(document.getElementById('percentPart').value);
-const b=Number(document.getElementById('percentTotal').value);
-const result=document.getElementById('percentResult');
 const av=document.getElementById('percentPart').value;
 const bv=document.getElementById('percentTotal').value;
-if(av===''||bv===''||!Number.isFinite(a)||!Number.isFinite(b)){
-result.textContent='Please enter both numbers.';
-return;
-}
-if(b===0){
-result.textContent='The total number cannot be zero.';
-return;
-}
+const a=Number(av),b=Number(bv);
+const result=document.getElementById('percentResult');
+if(av===''||bv===''||!Number.isFinite(a)||!Number.isFinite(b)){result.textContent='Please enter both numbers.';return;}
+if(b===0){result.textContent='The total number cannot be zero.';return;}
 result.textContent=a+' is '+(a/b*100).toLocaleString(undefined,{maximumFractionDigits:6})+'% of '+b+'.';
 }
-
-const lengthFactors={
-mm:0.001,
-cm:0.01,
-m:1,
-km:1000,
-in:0.0254,
-ft:0.3048,
-mi:1609.344
-};
-
+const lengthFactors={mm:0.001,cm:0.01,m:1,km:1000,in:0.0254,ft:0.3048,mi:1609.344};
 function convertLength(){
 const input=document.getElementById('lengthValue').value;
-const value=Number(input);
-const from=document.getElementById('lengthFrom').value;
-const to=document.getElementById('lengthTo').value;
+const value=Number(input),from=document.getElementById('lengthFrom').value,to=document.getElementById('lengthTo').value;
 const result=document.getElementById('lengthResult');
-if(input===''||!Number.isFinite(value)){
-result.textContent='Please enter a valid length.';
-return;
-}
+if(input===''||!Number.isFinite(value)){result.textContent='Please enter a valid length.';return;}
 const converted=value*lengthFactors[from]/lengthFactors[to];
 result.textContent=value.toLocaleString()+' '+from+' = '+converted.toLocaleString(undefined,{maximumFractionDigits:8})+' '+to;
 }
-
 function calculateLoan(){
-const amountText=document.getElementById('loanAmount').value;
-const rateText=document.getElementById('loanRate').value;
-const yearsText=document.getElementById('loanYears').value;
-const amount=Number(amountText);
-const annualRate=Number(rateText);
-const years=Number(yearsText);
+const amountText=document.getElementById('loanAmount').value,rateText=document.getElementById('loanRate').value,yearsText=document.getElementById('loanYears').value;
+const amount=Number(amountText),annualRate=Number(rateText),years=Number(yearsText);
 const result=document.getElementById('loanResult');
-if(amountText===''||rateText===''||yearsText===''||!Number.isFinite(amount)||!Number.isFinite(annualRate)||!Number.isFinite(years)||amount<=0||annualRate<0||years<=0||years>50){
-result.textContent='Enter a positive loan amount, a non-negative interest rate and a term from 1 to 50 years.';
-return;
-}
-const n=Math.round(years*12);
-const r=annualRate/100/12;
+if(amountText===''||rateText===''||yearsText===''||!Number.isFinite(amount)||!Number.isFinite(annualRate)||!Number.isFinite(years)||amount<=0||annualRate<0||years<=0||years>50){result.textContent='Enter a positive loan amount, a non-negative interest rate and a term from 1 to 50 years.';return;}
+const n=Math.round(years*12),r=annualRate/100/12;
 const payment=r===0?amount/n:amount*r/(1-Math.pow(1+r,-n));
 const total=payment*n;
 const money=x=>x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
 result.innerHTML='<strong>Estimated monthly payment:</strong> '+money(payment)+'<br><strong>Total repayment:</strong> '+money(total)+'<br><strong>Total interest:</strong> '+money(total-amount);
 }
-
 function generateInvoice(){
-const business=document.getElementById('businessName').value.trim();
-const customer=document.getElementById('customerName').value.trim();
-const item=document.getElementById('invoiceItem').value.trim();
-const qtyText=document.getElementById('invoiceQty').value;
-const priceText=document.getElementById('invoicePrice').value;
-const qty=Number(qtyText);
-const price=Number(priceText);
-const result=document.getElementById('invoiceResult');
-if(!business||!customer||!item||qtyText===''||priceText===''||!Number.isFinite(qty)||!Number.isFinite(price)||qty<=0||price<0){
-result.textContent='Please fill in all fields with valid values.';
-return;
-}
+const business=document.getElementById('businessName').value.trim(),customer=document.getElementById('customerName').value.trim(),item=document.getElementById('invoiceItem').value.trim();
+const qtyText=document.getElementById('invoiceQty').value,priceText=document.getElementById('invoicePrice').value;
+const qty=Number(qtyText),price=Number(priceText),result=document.getElementById('invoiceResult');
+if(!business||!customer||!item||qtyText===''||priceText===''||!Number.isFinite(qty)||!Number.isFinite(price)||qty<=0||price<0){result.textContent='Please fill in all fields with valid values.';return;}
 const total=qty*price;
 const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=n=>n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-result.innerHTML=
-'<h3>'+safe(business)+'</h3>'+
-'<p><strong>INVOICE</strong></p>'+
-'<p>Invoice date: '+new Date().toLocaleDateString()+'</p>'+
-'<p><strong>Bill to:</strong> '+safe(customer)+'</p>'+
-'<table><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>'+
-'<tbody><tr><td>'+safe(item)+'</td><td>'+qty+'</td><td>'+money(price)+'</td><td>'+money(total)+'</td></tr></tbody></table>'+
-'<div class="total">Total: '+money(total)+'</div>';
+result.innerHTML='<h3>'+safe(business)+'</h3>'+'<p><strong>INVOICE</strong></p>'+'<p>Invoice date: '+new Date().toLocaleDateString()+'</p>'+'<p><strong>Bill to:</strong> '+safe(customer)+'</p>'+'<table><thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>'+'<tbody><tr><td>'+safe(item)+'</td><td>'+qty+'</td><td>'+money(price)+'</td><td>'+money(total)+'</td></tr></tbody></table>'+'<div class="total">Total: '+money(total)+'</div>';
 }
-
 function printInvoice(){
 const result=document.getElementById('invoiceResult');
-if(!result.querySelector('table')){
-alert('Please create an invoice first.');
-return;
-}
+if(!result.querySelector('table')){alert('Please create an invoice first.');return;}
 const invoiceWindow=window.open('','_blank');
-if(!invoiceWindow){
-alert('Please allow pop-ups in your browser to print the invoice.');
-return;
-}
+if(!invoiceWindow){alert('Please allow pop-ups in your browser to print the invoice.');return;}
 invoiceWindow.document.write('<!DOCTYPE html><html><head><title>Invoice - TooloraTools</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:Arial,sans-serif;padding:25px;color:#172033}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #ddd;padding:10px}.total{text-align:right;font-weight:bold;margin-top:20px}@media print{button{display:none}}</style></head><body>'+result.innerHTML+'<p>Generated with TooloraTools</p><script>window.onload=function(){window.print()}<\/script></body></html>');
 invoiceWindow.document.close();
 }
-
 function copyText(id){
 const box=document.getElementById(id);
-if(!box.value){
-alert('Please enter some text first.');
-return;
-}
+if(!box.value){alert('Please enter some text first.');return;}
 copyValue(box.value);
 }
-
 function copyPassword(){
 const value=document.getElementById('password').textContent;
-if(value==='Your password will appear here.'||value.startsWith('Secure generation')){
-alert('Generate a password first.');
-return;
-}
+if(value==='Your password will appear here.'||value.startsWith('Secure generation')){alert('Generate a password first.');return;}
 copyValue(value);
 }
-
 async function copyValue(value){
 try{
-if(navigator.clipboard&&window.isSecureContext){
-await navigator.clipboard.writeText(value);
-}else{
-const area=document.createElement('textarea');
-area.value=value;
-area.style.position='fixed';
-area.style.opacity='0';
-document.body.appendChild(area);
-area.select();
-const ok=document.execCommand('copy');
-area.remove();
+if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value);}
+else{
+const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';
+document.body.appendChild(area);area.select();const ok=document.execCommand('copy');area.remove();
 if(!ok)throw new Error('Copy failed');
 }
 alert('Copied successfully!');
-}catch(e){
-alert('Copy is unavailable. Please select and copy the text manually.');
-}
+}catch(e){alert('Copy is unavailable. Please select and copy the text manually.');}
 }
 </script>
 </body>
