@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://tooloratools.github.io/</loc>
   </url>
+
+  <url>
+    <loc>https://tooloratools.github.io/jpg-to-pdf.html</loc>
+  </url>
+
+  <url>
+    <loc>https://tooloratools.github.io/image-resizer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://tooloratools.github.io/social-video-downloader.html</loc>
+  </url>
+
+  <url>
+    <loc>https://tooloratools.github.io/download.html</loc>
+  </url>
+
 </urlset>
