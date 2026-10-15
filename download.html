@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Download Options - TooloraTools</title>
+<meta name="description" content="View video link details and available download options on TooloraTools.">
+<meta name="theme-color" content="#101828">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{padding:22px 18px;background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);color:#fff}
+nav,main{max-width:760px;margin:auto}
+.logo{font-size:23px;font-weight:800}.logo span{color:#c4b5fd}
+main{padding:28px 16px}
+.back{border:0;border-radius:9px;padding:11px 14px;background:#eef2ff;color:#4338ca;font-weight:700;cursor:pointer;margin-bottom:18px}
+h1{font-size:clamp(27px,5vw,35px);margin:0 0 10px}
+.subtitle{color:#667085;line-height:1.6;margin:0 0 24px}
+.panel{background:white;border:1px solid #e5e7eb;border-radius:19px;padding:20px;box-shadow:0 10px 30px #1018280c;margin-bottom:18px}
+.preview{min-height:190px;border-radius:14px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.preview .symbol{font-size:44px;margin-bottom:10px}
+.preview p{margin:4px;color:#667085;font-size:14px;line-height:1.5}
+.creator{display:flex;align-items:center;gap:12px;margin-top:17px}
+.avatar{height:50px;width:50px;border-radius:50%;background:#e9e7ff;display:grid;place-items:center;font-size:23px;color:#4f46e5;font-weight:700}
+.creator h2{font-size:16px;margin:0 0 5px}
+.creator p{font-size:13px;color:#667085;margin:0}
+.linkbox{margin-top:17px;padding:12px;background:#f8fafc;border-radius:10px;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.label{font-weight:700;margin:0 0 14px}
+.option{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 13px;border:1px solid #e4e7ec;border-radius:13px;margin-top:12px}
+.option h3{font-size:15px;margin:0 0 6px}
+.option p{font-size:12px;color:#667085;margin:0;line-height:1.5}
+.ad{font-size:10px;background:#fff0c2;color:#8a5700;border-radius:5px;padding:4px 6px}
+.option button{border:0;border-radius:9px;background:#4f46e5;color:white;padding:11px 13px;font-weight:700;white-space:nowrap;cursor:pointer}
+.message{background:#fff7e6;color:#8a5700;padding:13px;border-radius:10px;margin-top:15px;font-size:13px;line-height:1.6}
+footer{text-align:center;padding:25px 12px;color:#667085;font-size:13px}
+@media(max-width:420px){.panel{padding:15px}.option{padding:12px 9px}.option h3{font-size:13px}.option button{padding:10px;font-size:12px}}
+</style>
+</head>
+<body>
+<header><nav><div class="logo">Toolora<span>Tools</span></div></nav></header>
+
+<main>
+<button class="back" onclick="history.back()">← Back</button>
+<h1 id="title">Video Download Options</h1>
+<p class="subtitle">Review your link and choose an available option.</p>
+
+<section class="panel">
+<div class="preview">
+<div class="symbol" id="platformSymbol">▶</div>
+<strong id="previewTitle">Video Preview</strong>
+<p id="previewText">Video thumbnail is not available yet.</p>
+</div>
+
+<div class="creator">
+<div class="avatar" id="avatar">?</div>
+<div>
+<h2 id="creatorName">Creator information unavailable</h2>
+<p id="creatorInfo">Profile details require a connected video service.</p>
+</div>
+</div>
+
+<div class="linkbox">
+<strong>Submitted link:</strong>
+<div id="submittedUrl">No link received</div>
+</div>
+</section>
+
+<section class="panel">
+<p class="label">Choose Download Quality</p>
+
+<div class="option">
+<div>
+<h3>Without Watermark HD <span class="ad">AD</span></h3>
+<p>High-quality video option</p>
+</div>
+<button onclick="downloadMessage()">Download</button>
+</div>
+
+<div class="option">
+<div>
+<h3>Without Watermark</h3>
+<p>Standard video option</p>
+</div>
+<button onclick="downloadMessage()">Download</button>
+</div>
+
+<div class="option">
+<div>
+<h3>Download MP3</h3>
+<p>Audio-only option</p>
+</div>
+<button onclick="downloadMessage()">Download</button>
+</div>
+
+<div class="message" id="status">
+The download service is not connected yet. These buttons are ready as interface elements, but cannot download a file until a working service is integrated.
+</div>
+</section>
+</main>
+
+<footer>© 2026 TooloraTools. All rights reserved.</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const platform = params.get("platform");
+const videoUrl = params.get("url");
+
+function goHome(){
+  window.location.href = "social-video-downloader.html";
+}
+
+if((platform!=="tiktok" && platform!=="facebook") || !videoUrl){
+  document.getElementById("title").textContent="Video Link Missing";
+  document.getElementById("previewTitle").textContent="No video link received";
+  document.getElementById("previewText").textContent="Return to the previous page and submit a video link.";
+  document.getElementById("creatorName").textContent="No creator information";
+  document.getElementById("submittedUrl").textContent="No valid link provided";
+  document.querySelectorAll(".option button").forEach(button=>button.disabled=true);
+  document.getElementById("status").textContent="Please go back and submit a valid link.";
+}else{
+  const isTikTok = platform==="tiktok";
+  document.title = (isTikTok?"TikTok":"Facebook")+" Video Options - TooloraTools";
+  document.getElementById("title").textContent =
+    isTikTok?"TikTok Video Downloader":"Facebook Reels Downloader";
+  document.getElementById("platformSymbol").textContent=isTikTok?"♪":"f";
+  document.getElementById("previewTitle").textContent =
+    isTikTok?"TikTok Video":"Facebook Video";
+  document.getElementById("previewText").textContent =
+    "The actual video thumbnail will appear when a video information service is connected.";
+  document.getElementById("avatar").textContent=isTikTok?"♪":"f";
+  document.getElementById("creatorName").textContent="Creator name not available";
+  document.getElementById("submittedUrl").textContent=videoUrl;
+}
+
+function downloadMessage(){
+  alert("The download service has not been connected yet. A compatible video-processing service is required to retrieve the actual video or MP3 file.");
+}
+</script>
+</body>
+</html>
