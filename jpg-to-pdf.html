@@ -1,1 +1,546 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPG to PDF & PDF Editor - TooloraTools</title>
+<meta name="description" content="Convert images to PDF and edit PDF files online for free. Add text, watermarks, rotate or remove pages, and merge PDF documents.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tooloratools.github.io/jpg-to-pdf.html">
+<meta name="theme-color" content="#101828">
+<style>
+:root{--navy:#101828;--navy2:#182747;--blue:#4f46e5;--purple:#7c3aed;--ink:#172033;--muted:#667085;--line:#e5e9f2;--bg:#f5f7fc;--white:#fff;--green:#138a62;--shadow:0 12px 35px rgba(16,24,40,.07)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);color:#fff;padding:23px 18px 45px}
+.nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:23px;font-weight:850;letter-spacing:-.7px}
+.brand span{color:#c4b5fd}
+.navtag{font-size:12px;color:#e0e7ff;border:1px solid #ffffff35;padding:7px 11px;border-radius:30px}
+.hero{max-width:850px;margin:34px auto 0;text-align:center}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd}
+.hero h1{font-size:clamp(28px,5vw,43px);line-height:1.12;letter-spacing:-1.4px;margin:10px 0 12px}
+.hero p{color:#e0e7ff;max-width:610px;margin:0 auto;font-size:15px}
+.wrap{max-width:1100px;margin:-22px auto 0;padding:0 16px 38px}
+.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:0 0 20px}
+.trust span{font-size:12px;color:#475467;background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 11px;box-shadow:0 3px 12px #10182808}
+.workspace{background:#fff;border:1px solid #e6eaf2;border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:grid;grid-template-columns:1fr 1fr;padding:8px;gap:8px;background:#fafbff;border-bottom:1px solid var(--line)}
+.tab{border:0;border-radius:13px;background:transparent;color:#667085;padding:14px 10px;font-weight:750}
+.tab.active{color:#fff;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 6px 15px #4f46e533}
+.panel{padding:clamp(16px,3vw,30px)}
+.panel[hidden]{display:none}
+.section-title{font-size:20px;letter-spacing:-.5px;margin:0 0 5px}
+.sub{font-size:13px;color:var(--muted);margin:0 0 20px}
+.upload{border:2px dashed #c7cbed;border-radius:17px;background:linear-gradient(145deg,#fafaff,#f5f3ff);padding:27px 15px;text-align:center;transition:.2s}
+.upload:hover{border-color:var(--blue);background:#f3f2ff}
+.upload .symbol{width:49px;height:49px;margin:0 auto 10px;border-radius:15px;background:#e8e7ff;color:var(--blue);display:grid;place-items:center;font-size:24px}
+.upload strong{display:block;font-size:16px}
+.upload p{margin:5px 0 14px;font-size:12px;color:var(--muted)}
+.btn{border:0;border-radius:11px;padding:12px 16px;font-size:13px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:transform .15s,opacity .15s}
+.btn:active{transform:scale(.98)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;box-shadow:0 5px 13px #4f46e526}
+.secondary{background:#f0efff;color:#4338ca;border:1px solid #e1ddff}
+.ghost{background:#fff;border:1px solid var(--line);color:#344054}
+.danger{background:#fff1f2;color:#be123c;border:1px solid #ffe0e5}
+.full{width:100%}
+.field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:20px}
+.field{min-width:0}
+.field label{display:block;font-size:12px;font-weight:750;color:#344054;margin:0 0 6px}
+.field input,.field select{width:100%;min-width:0;border:1px solid #dfe4ed;border-radius:10px;background:#fff;padding:11px;color:var(--ink);outline:none}
+.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4f46e51a}
+details.advanced{margin-top:14px;border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+details.advanced summary{font-size:13px;font-weight:750;color:#4338ca;cursor:pointer}
+details.advanced .field-grid{margin-top:15px}
+.file-list{display:grid;gap:9px;margin-top:15px}
+.file-row{display:flex;align-items:center;gap:11px;padding:10px;border:1px solid var(--line);border-radius:12px;min-width:0}
+.thumb{width:48px;height:48px;flex-shrink:0;border-radius:8px;object-fit:cover;background:#f2f4f7}
+.file-info{min-width:0;flex:1}
+.file-info strong{display:block;font-size:12px;overflow-wrap:anywhere}
+.file-info small{font-size:11px;color:var(--muted)}
+.row-actions{display:flex;gap:4px;flex-shrink:0}
+.icon-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 8px;color:#475467;font-size:12px}
+.empty{border:1px solid var(--line);border-radius:12px;padding:17px;text-align:center;color:var(--muted);font-size:13px}
+.action-area{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.status{display:none;margin-top:14px;border-radius:11px;padding:12px 13px;font-size:13px;overflow-wrap:anywhere}
+.status.show{display:block}
+.status.ok{background:#ecfdf3;color:#067647;border:1px solid #abefc6}
+.status.err{background:#fff1f2;color:#be123c;border:1px solid #fecdd3}
+.status.info{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.result{display:none;margin-top:15px;padding:16px;border-radius:14px;border:1px solid #abefc6;background:#f0fdf4}
+.result.show{display:block}
+.result strong{display:block;color:#067647;margin-bottom:5px}
+.editor-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}
+.tool-card{border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
+.tool-card h3{font-size:14px;margin:0 0 5px}
+.tool-card p{font-size:12px;color:var(--muted);margin:0 0 12px}
+.tool-card .field{margin:10px 0}
+.tool-card .btn{width:100%;margin-top:5px}
+.editor-summary{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fafbff;border-radius:13px;padding:13px;margin-top:15px}
+.pdf-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#fee4e2;color:#b42318;font-weight:900;font-size:12px}
+.editor-summary strong{font-size:13px;display:block;overflow-wrap:anywhere}
+.editor-summary small{font-size:12px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin:13px 0 0}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:22px 0}
+.benefit{padding:17px;background:#fff;border:1px solid var(--line);border-radius:15px}
+.benefit .ico{font-size:20px;color:var(--blue)}
+.benefit strong{display:block;font-size:13px;margin:6px 0 4px}
+.benefit p{font-size:12px;color:var(--muted);margin:0}
+.seo{background:#fff;border:1px solid var(--line);border-radius:16px;padding:21px;margin-top:18px}
+.seo h2{font-size:18px;margin:0 0 7px}
+.seo p{font-size:13px;color:#667085;margin:0}
+footer{text-align:center;color:#667085;font-size:12px;padding:20px 12px 30px}
+footer a{color:#4f46e5;text-decoration:none}
+@media(max-width:650px){
+ .topbar{padding:18px 15px 39px}.brand{font-size:20px}.hero{margin-top:27px}.hero p{font-size:13px}
+ .wrap{padding:0 10px 25px}.workspace{border-radius:17px}.tabs{gap:5px;padding:6px}
+ .tab{padding:12px 5px;font-size:12px}.panel{padding:16px 13px}
+ .field-grid{grid-template-columns:1fr 1fr;gap:11px}
+ .field-grid .field:last-child:nth-child(odd){grid-column:1/-1}
+ .editor-tools{grid-template-columns:1fr}
+ .benefits{grid-template-columns:1fr;gap:9px}.benefit{padding:13px}
+ .row-actions{flex-wrap:wrap}.file-row{gap:8px}.thumb{width:41px;height:41px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <nav class="nav">
+  <div class="brand">Toolora<span>Tools</span></div>
+  <div class="navtag">FREE ONLINE TOOLS</div>
+ </nav>
+ <div class="hero">
+  <div class="eyebrow">Simple Tools. Easy Life.</div>
+  <h1>Images to PDF &amp; PDF Editor</h1>
+  <p>Convert images, organize PDF pages and make quick edits — all in one simple workspace.</p>
+ </div>
+</header>
+
+<main class="wrap">
+ <div class="trust">
+  <span>✓ Free to use</span><span>✓ No account required</span><span>✓ Mobile &amp; desktop</span><span>✓ Files processed in your browser</span>
+ </div>
+
+ <section class="workspace">
+  <div class="tabs" role="tablist" aria-label="PDF tools">
+   <button class="tab active" id="tabImages" role="tab" aria-selected="true" aria-controls="imagesPanel">▧ Images to PDF</button>
+   <button class="tab" id="tabEditor" role="tab" aria-selected="false" aria-controls="editorPanel">✎ Edit PDF</button>
+  </div>
+
+  <section class="panel" id="imagesPanel" role="tabpanel">
+   <h2 class="section-title">Convert Images to PDF</h2>
+   <p class="sub">Choose photos, arrange them in order, and create your PDF.</p>
+
+   <div class="upload">
+    <div class="symbol">＋</div>
+    <strong>Choose your images</strong>
+    <p>JPG, JPEG, PNG or WebP · Select multiple files</p>
+    <button class="btn primary" id="chooseImages">Choose Images</button>
+    <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" multiple hidden>
+   </div>
+
+   <div class="file-list" id="imageList"><div class="empty">No images selected yet.</div></div>
+
+   <div class="field-grid">
+    <div class="field"><label for="pageSize">Page Size</label>
+     <select id="pageSize"><option value="a4">A4</option><option value="letter">Letter</option><option value="a3">A3</option><option value="a5">A5</option><option value="fit">Fit to Image</option></select>
+    </div>
+    <div class="field"><label for="orientation">Orientation</label>
+     <select id="orientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option><option value="auto">Auto</option></select>
+    </div>
+    <div class="field"><label for="margin">Margins</label>
+     <select id="margin"><option value="0">No Margin</option><option value="5" selected>5 mm</option><option value="10">10 mm</option><option value="20">20 mm</option></select>
+    </div>
+   </div>
+
+   <details class="advanced">
+    <summary>Advanced Settings</summary>
+    <div class="field-grid">
+     <div class="field"><label for="imageFit">Image Fit</label><select id="imageFit"><option value="contain">Fit Entire Image</option><option value="cover">Fill Page</option></select></div>
+     <div class="field"><label for="quality">Image Quality</label><select id="quality"><option value="0.75">Smaller File</option><option value="0.88" selected>Balanced</option><option value="0.96">High Quality</option></select></div>
+     <div class="field"><label for="pdfName">PDF File Name</label><input id="pdfName" value="tooloratools-pdf" maxlength="80" placeholder="my-document"></div>
+     <div class="field"><label for="pdfBg">Background</label><select id="pdfBg"><option value="#ffffff">White</option><option value="#000000">Black</option></select></div>
+     <div class="field"><label for="addNumbers">Page Numbers</label><select id="addNumbers"><option value="no">No</option><option value="yes">Yes</option></select></div>
+    </div>
+   </details>
+
+   <div class="action-area">
+    <button class="btn primary full" id="convertBtn" disabled>Convert to PDF →</button>
+    <div class="status" id="imageStatus" role="status" aria-live="polite"></div>
+    <div class="result" id="imageResult">
+     <strong>Your PDF is ready!</strong>
+     <div id="imageResultInfo" class="note"></div>
+     <button class="btn primary full" id="downloadImages" style="margin-top:12px">Download PDF</button>
+    </div>
+   </div>
+  </section>
+
+  <section class="panel" id="editorPanel" role="tabpanel" hidden>
+   <h2 class="section-title">Edit Your PDF</h2>
+   <p class="sub">Make practical changes to your PDF without complicated menus.</p>
+   <div class="upload">
+    <div class="symbol">↥</div>
+    <strong>Choose a PDF document</strong>
+    <p>Upload a PDF file from your device</p>
+    <button class="btn primary" id="choosePdf">Choose PDF</button>
+    <input type="file" id="pdfInput" accept="application/pdf,.pdf" hidden>
+   </div>
+
+   <div class="editor-summary" id="pdfSummary" hidden>
+    <div class="pdf-icon">PDF</div>
+    <div style="flex:1;min-width:0"><strong id="pdfFileName">document.pdf</strong><small id="pdfFileInfo">Ready to edit</small></div>
+    <button class="btn ghost" id="replacePdf">Change</button>
+   </div>
+
+   <div class="editor-tools">
+    <div class="tool-card">
+     <h3>✎ Add Text</h3><p>Add text to a selected page. Existing text is not replaced.</p>
+     <div class="field"><label for="textPage">Page Number</label><input type="number" id="textPage" min="1" value="1"></div>
+     <div class="field"><label for="overlayText">Text to Add</label><input id="overlayText" maxlength="180" placeholder="Enter your text"></div>
+     <div class="field-grid" style="margin-top:10px;grid-template-columns:1fr 1fr">
+      <div class="field"><label for="textX">Left Position (pt)</label><input type="number" id="textX" min="0" value="50"></div>
+      <div class="field"><label for="textY">Top Position (pt)</label><input type="number" id="textY" min="0" value="60"></div>
+     </div>
+     <button class="btn secondary" id="addTextBtn" disabled>Add Text</button>
+    </div>
+
+    <div class="tool-card">
+     <h3>◇ Add Watermark</h3><p>Place a light watermark across every page.</p>
+     <div class="field"><label for="watermarkText">Watermark Text</label><input id="watermarkText" maxlength="80" placeholder="CONFIDENTIAL"></div>
+     <button class="btn secondary" id="watermarkBtn" disabled>Add Watermark</button>
+    </div>
+
+    <div class="tool-card">
+     <h3>⟳ Rotate Pages</h3><p>Rotate one page or every page.</p>
+     <div class="field"><label for="rotatePage">Page Number (0 = All)</label><input type="number" id="rotatePage" min="0" value="0"></div>
+     <div class="field"><label for="rotateAngle">Rotation</label><select id="rotateAngle"><option value="90">90° Clockwise</option><option value="180">180°</option><option value="270">270° Clockwise</option></select></div>
+     <button class="btn secondary" id="rotateBtn" disabled>Rotate Pages</button>
+    </div>
+
+    <div class="tool-card">
+     <h3>⌫ Delete a Page</h3><p>Remove one page from the document.</p>
+     <div class="field"><label for="deletePage">Page Number</label><input type="number" id="deletePage" min="1" value="1"></div>
+     <button class="btn danger" id="deleteBtn" disabled>Delete Page</button>
+    </div>
+
+    <div class="tool-card">
+     <h3>＋ Merge Another PDF</h3><p>Append pages from a second PDF to this document.</p>
+     <button class="btn ghost" id="chooseMerge" disabled>Choose PDF to Merge</button>
+     <input type="file" id="mergeInput" accept="application/pdf,.pdf" hidden>
+    </div>
+
+    <div class="tool-card">
+     <h3>№ Page Numbers</h3><p>Add page numbers to all pages.</p>
+     <div class="field"><label for="numberStart">Start Number</label><input type="number" id="numberStart" min="1" value="1"></div>
+     <button class="btn secondary" id="numberBtn" disabled>Add Page Numbers</button>
+    </div>
+   </div>
+
+   <div class="action-area">
+    <button class="btn primary full" id="downloadEdited" disabled>Download Edited PDF ↓</button>
+    <div class="status" id="editorStatus" role="status" aria-live="polite"></div>
+    <p class="note">Changes are applied to your working copy. Download the file when you are finished. Password-protected PDFs and scanned-text recognition are not supported by this basic editor.</p>
+   </div>
+  </section>
+ </section>
+
+ <section class="benefits">
+  <div class="benefit"><div class="ico">✦</div><strong>Easy to Use</strong><p>Clear controls and simple steps for everyday PDF tasks.</p></div>
+  <div class="benefit"><div class="ico">◈</div><strong>Privacy First</strong><p>Your files are processed in your browser and are not uploaded by this page.</p></div>
+  <div class="benefit"><div class="ico">↗</div><strong>Works Across Devices</strong><p>Use the same tools on mobile, tablet, laptop and desktop.</p></div>
+ </section>
+
+ <section class="seo">
+  <h2>Free Online Image to PDF Converter and PDF Editor</h2>
+  <p>TooloraTools helps you convert images into PDF documents and make basic PDF changes online. Organize images, add text or watermarks, rotate or remove pages, merge documents and download your updated PDF. The interface is designed for simple use on mobile and desktop devices.</p>
+ </section>
+</main>
+<footer>© 2026 TooloraTools. All rights reserved. · <a href="https://tooloratools.github.io/">Home</a></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+(() => {
+"use strict";
+const $ = id => document.getElementById(id);
+const imageFiles = [];
+let imageBlob = null;
+let pdfBytes = null;
+let pdfFileName = "edited-document.pdf";
+let pdfPageCount = 0;
+
+function showStatus(id, message, type="info") {
+ const el=$(id); el.textContent=message; el.className="status show "+type;
+}
+function clearStatus(id) { const el=$(id); el.textContent=""; el.className="status"; }
+function safeName(value, fallback) {
+ const name=(value||"").trim().replace(/\.pdf$/i,"").replace(/[\\/:*?"<>|]+/g,"-").replace(/\s+/g,"-").slice(0,80);
+ return name || fallback;
+}
+function formatBytes(bytes) {
+ if(bytes<1024) return bytes+" B";
+ if(bytes<1048576) return (bytes/1024).toFixed(1)+" KB";
+ return (bytes/1048576).toFixed(2)+" MB";
+}
+function loadScriptCheck() {
+ if(!window.jspdf || !window.PDFLib) {
+  showStatus("imageStatus","A required library could not load. Check your internet connection and reload this page.","err");
+  showStatus("editorStatus","A required library could not load. Check your internet connection and reload this page.","err");
+  return false;
+ }
+ return true;
+}
+
+$("tabImages").addEventListener("click",()=>{
+ $("imagesPanel").hidden=false; $("editorPanel").hidden=true;
+ $("tabImages").classList.add("active"); $("tabEditor").classList.remove("active");
+ $("tabImages").setAttribute("aria-selected","true"); $("tabEditor").setAttribute("aria-selected","false");
+});
+$("tabEditor").addEventListener("click",()=>{
+ $("imagesPanel").hidden=true; $("editorPanel").hidden=false;
+ $("tabEditor").classList.add("active"); $("tabImages").classList.remove("active");
+ $("tabEditor").setAttribute("aria-selected","true"); $("tabImages").setAttribute("aria-selected","false");
+});
+
+$("chooseImages").addEventListener("click",()=>$("imageInput").click());
+$("imageInput").addEventListener("change",e=>{
+ const files=Array.from(e.target.files||[]);
+ const allowed=["image/jpeg","image/png","image/webp"];
+ const bad=files.filter(f=>!allowed.includes(f.type));
+ if(bad.length) showStatus("imageStatus","Some files were skipped. Choose JPG, PNG or WebP images.","err");
+ files.filter(f=>allowed.includes(f.type)).forEach(file=>{
+  if(imageFiles.length>=100)return;
+  imageFiles.push({file,url:URL.createObjectURL(file),id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random())});
+ });
+ e.target.value="";
+ imageBlob=null; $("imageResult").classList.remove("show");
+ renderImages();
+ if(imageFiles.length) clearStatus("imageStatus");
+});
+function renderImages(){
+ const list=$("imageList"); list.innerHTML="";
+ if(!imageFiles.length){list.innerHTML='<div class="empty">No images selected yet.</div>';$("convertBtn").disabled=true;return;}
+ imageFiles.forEach((item,index)=>{
+  const row=document.createElement("div");row.className="file-row";
+  const img=document.createElement("img");img.className="thumb";img.src=item.url;img.alt="";
+  const info=document.createElement("div");info.className="file-info";
+  const name=document.createElement("strong");name.textContent=(index+1)+". "+item.file.name;
+  const size=document.createElement("small");size.textContent=formatBytes(item.file.size);
+  info.append(name,size);
+  const actions=document.createElement("div");actions.className="row-actions";
+  [["↑","Move up",()=>moveImage(index,-1)],["↓","Move down",()=>moveImage(index,1)],["Remove","Remove image",()=>removeImage(index)]].forEach(([label,title,fn])=>{
+   const b=document.createElement("button");b.type="button";b.className="icon-btn";b.textContent=label;b.title=title;b.setAttribute("aria-label",title);b.disabled=(label==="↑"&&index===0)||(label==="↓"&&index===imageFiles.length-1);b.addEventListener("click",fn);actions.appendChild(b);
+  });
+  row.append(img,info,actions);list.appendChild(row);
+ });
+ $("convertBtn").disabled=false;
+}
+function moveImage(index,step){
+ const target=index+step;if(target<0||target>=imageFiles.length)return;
+ [imageFiles[index],imageFiles[target]]=[imageFiles[target],imageFiles[index]];renderImages();
+}
+function removeImage(index){
+ URL.revokeObjectURL(imageFiles[index].url);imageFiles.splice(index,1);imageBlob=null;
+ $("imageResult").classList.remove("show");renderImages();
+}
+function readImage(file){
+ return new Promise((resolve,reject)=>{
+  const img=new Image();const url=URL.createObjectURL(file);
+  img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};
+  img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Could not read "+file.name))};
+  img.src=url;
+ });
+}
+function canvasData(img,quality,background){
+ const canvas=document.createElement("canvas");
+ canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+ const ctx=canvas.getContext("2d");
+ ctx.fillStyle=background;ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.drawImage(img,0,0);
+ return canvas.toDataURL("image/jpeg",quality);
+}
+function pageDimensions(img){
+ const size=$("pageSize").value,orient=$("orientation").value;
+ if(size==="fit"){
+  let w=img.naturalWidth*25.4/150,h=img.naturalHeight*25.4/150;
+  const scale=Math.min(500/Math.max(w,h),1);
+  w=Math.max(10,w*scale);h=Math.max(10,h*scale);
+  return orient==="landscape"&&h>w?[h,w]:orient==="portrait"&&w>h?[h,w]:[w,h];
+ }
+ let pair={a4:[210,297],a3:[297,420],a5:[148,210],letter:[215.9,279.4]}[size]||[210,297];
+ if(orient==="landscape"||(orient==="auto"&&img.naturalWidth>img.naturalHeight))return [pair[1],pair[0]];
+ return pair;
+}
+function drawImage(doc,data,img,dimensions,margin,fit){
+ const [w,h]=dimensions;
+ const usableW=Math.max(1,w-margin*2),usableH=Math.max(1,h-margin*2);
+ const ratio=img.naturalWidth/img.naturalHeight;
+ let dw=usableW,dh=usableH;
+ if(fit==="contain"){
+  if(dw/dh>ratio)dw=dh*ratio;else dh=dw/ratio;
+ }else{
+  if(dw/dh>ratio)dh=dw/ratio;else dw=dh*ratio;
+ }
+ const x=(w-dw)/2,y=(h-dh)/2;
+ if(fit==="cover"){
+  const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext("2d");ctx.fillStyle=$("pdfBg").value;ctx.fillRect(0,0,canvas.width,canvas.height);
+  const targetRatio=usableW/usableH;
+  let sx=0,sy=0,sw=canvas.width,sh=canvas.height;
+  if(ratio>targetRatio){sw=canvas.height*targetRatio;sx=(canvas.width-sw)/2;}
+  else{sh=canvas.width/targetRatio;sy=(canvas.height-sh)/2;}
+  ctx.drawImage(img,sx,sy,sw,sh,0,0,canvas.width,canvas.height);
+  data=canvas.toDataURL("image/jpeg",Number($("quality").value));
+  doc.addImage(data,"JPEG",margin,margin,usableW,usableH,undefined,"FAST");
+ }else{
+  doc.addImage(data,"JPEG",x,y,dw,dh,undefined,"FAST");
+ }
+}
+$("convertBtn").addEventListener("click",async()=>{
+ if(!imageFiles.length)return;
+ if(!loadScriptCheck())return;
+ const btn=$("convertBtn");btn.disabled=true;btn.textContent="Preparing PDF…";
+ $("imageResult").classList.remove("show");clearStatus("imageStatus");
+ try{
+  const {jsPDF}=window.jspdf;
+  let doc=null;
+  const margin=Number($("margin").value);
+  for(let i=0;i<imageFiles.length;i++){
+   showStatus("imageStatus","Processing image "+(i+1)+" of "+imageFiles.length+"…","info");
+   const img=await readImage(imageFiles[i].file);
+   const dims=pageDimensions(img);
+   if(!doc)doc=new jsPDF({orientation:dims[0]>dims[1]?"landscape":"portrait",unit:"mm",format:dims,compress:true});
+   else doc.addPage(dims,dims[0]>dims[1]?"landscape":"portrait");
+   const data=canvasData(img,Number($("quality").value),$("pdfBg").value);
+   drawImage(doc,data,img,dims,$("pageSize").value==="fit"?0:margin,$("imageFit").value);
+   if($("addNumbers").value==="yes"){
+    doc.setFontSize(9);doc.setTextColor(100,100,100);
+    doc.text(String(i+1),dims[0]/2,dims[1]-Math.max(4,margin/2),{align:"center"});
+   }
+  }
+  imageBlob=doc.output("blob");
+  $("imageResultInfo").textContent=imageFiles.length+" page(s) · "+formatBytes(imageBlob.size);
+  $("imageResult").classList.add("show");
+  showStatus("imageStatus","PDF created successfully.","ok");
+ }catch(err){
+  console.error(err);showStatus("imageStatus",err.message||"Could not create PDF. Try fewer or smaller images.","err");
+ }finally{btn.disabled=imageFiles.length===0;btn.textContent="Convert to PDF →";}
+});
+$("downloadImages").addEventListener("click",()=>{
+ if(!imageBlob)return;
+ const url=URL.createObjectURL(imageBlob);const a=document.createElement("a");
+ a.href=url;a.download=safeName($("pdfName").value,"tooloratools-pdf")+".pdf";a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+});
+
+$("choosePdf").addEventListener("click",()=>$("pdfInput").click());
+$("replacePdf").addEventListener("click",()=>$("pdfInput").click());
+$("pdfInput").addEventListener("change",async e=>{
+ const file=e.target.files&&e.target.files[0];e.target.value="";
+ if(!file)return;
+ if(file.type!=="application/pdf"&&!file.name.toLowerCase().endsWith(".pdf")){
+  showStatus("editorStatus","Please choose a valid PDF file.","err");return;
+ }
+ if(file.size>100*1024*1024){showStatus("editorStatus","This basic editor supports files up to 100 MB. Try a smaller PDF.","err");return;}
+ try{
+  if(!loadScriptCheck())return;
+  clearStatus("editorStatus");showStatus("editorStatus","Opening PDF…","info");
+  const buffer=await file.arrayBuffer();
+  const loaded=await PDFLib.PDFDocument.load(buffer);
+  pdfBytes=await loaded.save();pdfPageCount=loaded.getPageCount();pdfFileName=file.name;
+  $("pdfFileName").textContent=file.name;
+  $("pdfFileInfo").textContent=pdfPageCount+" page(s) · "+formatBytes(file.size);
+  $("pdfSummary").hidden=false;
+  ["addTextBtn","watermarkBtn","rotateBtn","deleteBtn","chooseMerge","numberBtn","downloadEdited"].forEach(id=>$(id).disabled=false);
+  ["textPage","deletePage"].forEach(id=>$(id).max=pdfPageCount);
+  $("rotatePage").max=pdfPageCount;
+  $("textPage").value="1";$("deletePage").value="1";
+  showStatus("editorStatus","PDF loaded. Choose an editing action below.","ok");
+ }catch(err){
+  console.error(err);showStatus("editorStatus","Could not open this PDF. It may be password-protected or damaged.","err");
+ }
+});
+async function loadWorkingPdf(){
+ if(!pdfBytes)throw new Error("Choose a PDF file first.");
+ return await PDFLib.PDFDocument.load(pdfBytes);
+}
+async function applyEdit(label,operation){
+ const buttons=["addTextBtn","watermarkBtn","rotateBtn","deleteBtn","chooseMerge","numberBtn","downloadEdited"];
+ buttons.forEach(id=>$(id).disabled=true);
+ showStatus("editorStatus",label+"…","info");
+ try{
+  const doc=await loadWorkingPdf();
+  await operation(doc);
+  pdfBytes=await doc.save();
+  pdfPageCount=doc.getPageCount();
+  $("pdfFileInfo").textContent=pdfPageCount+" page(s) · Changes ready to download";
+  ["textPage","deletePage"].forEach(id=>$(id).max=Math.max(1,pdfPageCount));
+  $("rotatePage").max=pdfPageCount;
+  showStatus("editorStatus",label+" completed. Download your updated PDF when ready.","ok");
+ }catch(err){
+  console.error(err);showStatus("editorStatus",err.message||"The edit could not be completed.","err");
+ }finally{
+  buttons.forEach(id=>$(id).disabled=!pdfBytes);
+  $("deleteBtn").disabled=!pdfBytes||pdfPageCount<2;
+ }
+}
+$("addTextBtn").addEventListener("click",()=>applyEdit("Adding text",async doc=>{
+ const text=$("overlayText").value.trim();if(!text)throw new Error("Enter the text you want to add.");
+ const index=Number($("textPage").value)-1,pages=doc.getPages();
+ if(!Number.isInteger(index)||index<0||index>=pages.length)throw new Error("Enter a valid page number.");
+ const page=pages[index],{height}=page.getSize();
+ const x=Math.max(0,Number($("textX").value)||0),top=Math.max(0,Number($("textY").value)||0);
+ page.drawText(text,{x,y:Math.max(0,height-top),size:14,color:PDFLib.rgb(0.09,0.12,0.22),maxWidth:Math.max(30,page.getWidth()-x-20)});
+}));
+$("watermarkBtn").addEventListener("click",()=>applyEdit("Adding watermark",async doc=>{
+ const text=$("watermarkText").value.trim();if(!text)throw new Error("Enter watermark text first.");
+ doc.getPages().forEach(page=>{
+  const {width,height}=page.getSize();
+  page.drawText(text,{x:width*.12,y:height*.5,size:Math.min(40,width/Math.max(5,text.length*.65)),color:PDFLib.rgb(.55,.57,.63),opacity:.25,rotate:PDFLib.degrees(-30),maxWidth:width*.76});
+ });
+}));
+$("rotateBtn").addEventListener("click",()=>applyEdit("Rotating pages",async doc=>{
+ const pages=doc.getPages(),n=Number($("rotatePage").value),angle=Number($("rotateAngle").value);
+ if(!Number.isInteger(n)||n<0||n>pages.length)throw new Error("Enter 0 for all pages or a valid page number.");
+ const selected=n===0?pages:[pages[n-1]];
+ selected.forEach(p=>p.setRotation(PDFLib.degrees((p.getRotation().angle+angle)%360)));
+}));
+$("deleteBtn").addEventListener("click",()=>applyEdit("Deleting page",async doc=>{
+ const n=Number($("deletePage").value),count=doc.getPageCount();
+ if(!Number.isInteger(n)||n<1||n>count)throw new Error("Enter a valid page number.");
+ if(count<2)throw new Error("A PDF must contain at least one page.");
+ doc.removePage(n-1);
+}));
+$("chooseMerge").addEventListener("click",()=>$("mergeInput").click());
+$("mergeInput").addEventListener("change",async e=>{
+ const file=e.target.files&&e.target.files[0];e.target.value="";
+ if(!file)return;
+ if(file.size>100*1024*1024){showStatus("editorStatus","The selected PDF is too large for this basic editor.","err");return;}
+ await applyEdit("Merging PDF",async doc=>{
+  const other=await PDFLib.PDFDocument.load(await file.arrayBuffer());
+  const copied=await doc.copyPages(other,other.getPageIndices());
+  copied.forEach(page=>doc.addPage(page));
+ });
+});
+$("numberBtn").addEventListener("click",()=>applyEdit("Adding page numbers",async doc=>{
+ const start=Math.max(1,Number($("numberStart").value)||1);
+ doc.getPages().forEach((page,index)=>{
+  const {width}=page.getSize(),text=String(start+index);
+  page.drawText(text,{x:width/2-5,y:18,size:10,color:PDFLib.rgb(.3,.32,.38)});
+ });
+}));
+$("downloadEdited").addEventListener("click",()=>{
+ if(!pdfBytes)return;
+ const blob=new Blob([pdfBytes],{type:"application/pdf"}),url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;
+ a.download=safeName(pdfFileName,"edited-document")+".pdf";a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+});
+})();
+</script>
+</body>
+</html>
