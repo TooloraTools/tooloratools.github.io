@@ -2,577 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Social Video Downloader - TooloraTools</title>
-<meta name="description" content="Check TikTok and Facebook video links and explore available video and audio download options with TooloraTools.">
+<meta name="description" content="Paste a TikTok or Facebook video link to open video download options on TooloraTools.">
 <meta name="theme-color" content="#101828">
-<link rel="canonical" href="https://tooloratools.github.io/social-video-downloader.html">
-
 <style>
-:root {
-  --navy:#101828;
-  --blue:#4f46e5;
-  --purple:#7c3aed;
-  --text:#172033;
-  --muted:#667085;
-  --border:#e5e7eb;
-  --bg:#f5f7fb;
-  --white:#fff;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.6;
-}
-button,input { font:inherit; }
-button { cursor:pointer; }
-.header {
-  color:white;
-  padding:18px 16px;
-  background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);
-}
-.nav {
-  max-width:1000px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.brand {
-  color:white;
-  text-decoration:none;
-  font-size:23px;
-  font-weight:800;
-}
-.brand span { color:#b8b3ff; }
-.tag {
-  font-size:11px;
-  border:1px solid #ffffff40;
-  border-radius:20px;
-  padding:5px 10px;
-}
-.hero {
-  text-align:center;
-  color:white;
-  padding:38px 16px 78px;
-  background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);
-}
-.hero h1 {
-  font-size:clamp(28px,5vw,40px);
-  line-height:1.2;
-  margin:0 0 12px;
-  letter-spacing:-.8px;
-}
-.hero p {
-  margin:auto;
-  max-width:580px;
-  font-size:14px;
-  color:#e0e7ff;
-}
-main {
-  width:min(740px,100%);
-  margin:-42px auto 0;
-  padding:0 15px 35px;
-  position:relative;
-}
-.panel {
-  background:white;
-  border:1px solid #e8eaf2;
-  border-radius:21px;
-  padding:24px;
-  box-shadow:0 15px 45px #10182812;
-}
-h2 { margin:0 0 6px; }
-.subtitle {
-  color:var(--muted);
-  font-size:13px;
-  margin:0 0 20px;
-}
-.label {
-  display:block;
-  font-size:13px;
-  font-weight:700;
-  margin-bottom:8px;
-}
-/* Paste button sits at the END of the input row */
-.input-row {
-  display:flex;
-  align-items:stretch;
-  gap:0;
-  border:1px solid #d7dbea;
-  border-radius:13px;
-  overflow:hidden;
-  background:white;
-  transition:.2s;
-}
-.input-row:focus-within {
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px #4f46e51a;
-}
-.input-row input {
-  min-width:0;
-  flex:1;
-  padding:14px 12px;
-  border:0;
-  outline:0;
-  color:var(--text);
-  background:transparent;
-  font-size:14px;
-}
-.paste-btn {
-  border:0;
-  border-left:1px solid #e0e3f0;
-  padding:0 17px;
-  color:white;
-  font-weight:700;
-  font-size:13px;
-  background:linear-gradient(135deg,var(--blue),var(--purple));
-}
-.paste-btn:active { opacity:.8; }
-.platforms {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:18px;
-}
-.platform {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-align:left;
-  border:1px solid var(--border);
-  border-radius:13px;
-  background:white;
-  color:var(--text);
-  padding:12px;
-}
-.platform.selected {
-  border-color:var(--blue);
-  background:#f4f3ff;
-  box-shadow:0 0 0 2px #4f46e510;
-}
-.platform-icon {
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  color:white;
-  background:var(--navy);
-  display:grid;
-  place-items:center;
-  font-size:19px;
-  font-weight:800;
-  flex-shrink:0;
-}
-.platform-icon.fb { background:#1877f2; }
-.platform strong { display:block;font-size:14px; }
-.platform small { display:block;color:var(--muted);font-size:11px; }
-.primary {
-  display:block;
-  width:100%;
-  border:0;
-  border-radius:12px;
-  margin-top:15px;
-  padding:14px;
-  color:white;
-  font-weight:800;
-  background:linear-gradient(100deg,var(--blue),var(--purple));
-  box-shadow:0 7px 18px #4f46e52c;
-}
-.status {
-  display:none;
-  margin-top:13px;
-  padding:12px;
-  border-radius:11px;
-  font-size:13px;
-  overflow-wrap:anywhere;
-}
-.status.show { display:block; }
-.status.error {
-  color:#b42318;
-  background:#fff1f0;
-  border:1px solid #fecdca;
-}
-.status.info {
-  color:#3538cd;
-  background:#eef4ff;
-  border:1px solid #c7d7fe;
-}
-.results { display:none;margin-top:25px; }
-.results.show { display:block; }
-.results h2 { font-size:21px; }
-.results-intro {
-  color:var(--muted);
-  font-size:13px;
-  margin:0 0 14px;
-}
-.option {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  border:1px solid var(--border);
-  border-radius:15px;
-  background:white;
-  padding:15px 12px;
-  margin-top:12px;
-}
-.option-icon {
-  width:43px;
-  height:43px;
-  flex-shrink:0;
-  display:grid;
-  place-items:center;
-  border-radius:12px;
-  color:#4338ca;
-  background:#eef2ff;
-  font-size:13px;
-  font-weight:900;
-}
-.option-icon.hd { background:#f3e8ff;color:#7c3aed; }
-.option-icon.mp3 { background:#e8f8ef;color:#15803d; }
-.option-info { flex:1;min-width:0; }
-.option-info h3 { font-size:14px;margin:0 0 3px; }
-.option-info p { color:var(--muted);font-size:11px;margin:0; }
-.ad-badge {
-  display:inline-block;
-  color:#6d28d9;
-  background:#f3e8ff;
-  border-radius:5px;
-  padding:2px 5px;
-  font-size:9px;
-  font-weight:800;
-  vertical-align:middle;
-}
-.download-btn {
-  border:0;
-  border-radius:9px;
-  color:white;
-  background:var(--navy);
-  padding:10px 12px;
-  font-size:11px;
-  font-weight:800;
-  flex-shrink:0;
-}
-.download-btn.purple {
-  background:linear-gradient(100deg,var(--blue),var(--purple));
-}
-.download-btn.green { background:#15803d; }
-.note {
-  margin-top:17px;
-  padding:12px;
-  border:1px solid #eaecf0;
-  border-radius:11px;
-  color:var(--muted);
-  background:#f8fafc;
-  font-size:12px;
-}
-.info {
-  background:white;
-  border:1px solid #eaecf0;
-  border-radius:17px;
-  margin-top:22px;
-  padding:21px;
-}
-.info h2 { font-size:18px; }
-.info p,.info li { color:var(--muted);font-size:13px; }
-.info ul { padding-left:20px; }
-footer {
-  border-top:1px solid var(--border);
-  text-align:center;
-  padding:22px 12px;
-  color:var(--muted);
-  font-size:12px;
-}
-footer a { color:var(--blue);text-decoration:none; }
-
-@media(max-width:480px) {
-  .panel { padding:17px; }
-  .platform { padding:10px 8px;gap:7px; }
-  .platform-icon { width:32px;height:32px; }
-  .option { gap:9px;padding:12px 9px; }
-  .option-icon { width:37px;height:37px; }
-  .option-info h3 { font-size:12px; }
-  .option-info p { font-size:10px; }
-  .download-btn { padding:9px 8px;font-size:10px; }
-  .paste-btn { padding:0 13px; }
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{padding:22px 18px;background:linear-gradient(135deg,#101828,#273c75 65%,#4f46e5);color:white}
+nav,main{max-width:760px;margin:auto}
+.logo{font-size:23px;font-weight:800}.logo span{color:#c4b5fd}
+main{padding:32px 16px}
+.hero{text-align:center;margin-bottom:24px}
+h1{font-size:clamp(28px,6vw,38px);margin:0 0 12px}
+.hero p{color:#667085;line-height:1.6}
+.panel{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:22px;box-shadow:0 10px 30px #1018280c}
+.label{display:block;font-weight:700;margin:0 0 12px}
+.platforms{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.platform{padding:15px;border:1px solid #d0d5dd;border-radius:12px;background:white;font-size:16px;font-weight:700;cursor:pointer}
+.platform.active{border:2px solid #4f46e5;background:#f0efff;color:#4338ca}
+.inputrow{display:flex;gap:7px;border:1px solid #d0d5dd;border-radius:12px;padding:5px}
+input{min-width:0;flex:1;border:0;outline:none;padding:12px 7px;font-size:15px}
+.paste{border:0;border-radius:9px;padding:0 14px;background:#eef2ff;color:#4338ca;font-weight:700}
+.primary{width:100%;padding:15px;border:0;border-radius:12px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin-top:15px}
+.error{display:none;margin-top:14px;padding:12px;border-radius:10px;background:#fff1f2;color:#be123c;font-size:14px;line-height:1.5}
+.note{font-size:12px;color:#667085;line-height:1.6;margin-top:20px}
+footer{text-align:center;padding:25px 12px;color:#667085;font-size:13px}
 </style>
 </head>
-
 <body>
-<header class="header">
-  <nav class="nav">
-    <a class="brand" href="index.html">Toolora<span>Tools</span></a>
-    <span class="tag">FREE ONLINE TOOL</span>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Social Video Downloader</h1>
-  <p>Paste a video link and explore available download options in one place.</p>
-</section>
+<header><nav><div class="logo">Toolora<span>Tools</span></div></nav></header>
 
 <main>
-  <section class="panel">
-    <h2>Download Your Video</h2>
-    <p class="subtitle">Paste a TikTok or Facebook video link to get started.</p>
+<section class="hero">
+<h1>Social Video Downloader</h1>
+<p>Choose your platform, paste your video link, and continue to the next page.</p>
+</section>
 
-    <label class="label" for="videoUrl">Video Link</label>
-    <div class="input-row">
-      <input
-        id="videoUrl"
-        type="text"
-        inputmode="url"
-        autocomplete="url"
-        placeholder="Paste video link here..."
-        aria-label="Video link"
-      >
-      <button class="paste-btn" id="pasteBtn" type="button">Paste</button>
-    </div>
+<section class="panel">
+<label class="label">1. Select Platform</label>
+<div class="platforms">
+<button type="button" id="tiktok" class="platform active" onclick="choose('tiktok')">TikTok</button>
+<button type="button" id="facebook" class="platform" onclick="choose('facebook')">Facebook</button>
+</div>
 
-    <div class="platforms">
-      <button class="platform selected" data-platform="auto"
-        type="button" aria-pressed="true">
-        <span class="platform-icon">↗</span>
-        <span><strong>Auto Detect</strong><small>Detect link platform</small></span>
-      </button>
+<label class="label" for="videoUrl">2. Paste Video Link</label>
+<div class="inputrow">
+<input id="videoUrl" type="url" placeholder="Paste video link here">
+<button class="paste" type="button" onclick="pasteLink()">Paste</button>
+</div>
 
-      <button class="platform" data-platform="facebook"
-        type="button" aria-pressed="false">
-        <span class="platform-icon fb">f</span>
-        <span><strong>Facebook</strong><small>Videos and Reels</small></span>
-      </button>
-    </div>
+<button class="primary" type="button" onclick="continueToDownload()">Detect Link & Continue →</button>
+<div class="error" id="error"></div>
 
-    <button class="primary" id="checkBtn" type="button">
-      Check Video Link →
-    </button>
-
-    <div class="status" id="status" role="status" aria-live="polite"></div>
-
-    <section class="results" id="results">
-      <h2 id="resultTitle">Download Options</h2>
-      <p class="results-intro" id="resultIntro">
-        Choose an option if it is supported by the connected service.
-      </p>
-
-      <div class="option">
-        <div class="option-icon hd">HD</div>
-        <div class="option-info">
-          <h3>Without Watermark HD <span class="ad-badge">AD</span></h3>
-          <p>HD quality, when available</p>
-        </div>
-        <button class="download-btn purple" data-kind="hd" type="button">
-          Download
-        </button>
-      </div>
-
-      <div class="option">
-        <div class="option-icon">↓</div>
-        <div class="option-info">
-          <h3>Without Watermark</h3>
-          <p>Standard quality, when available</p>
-        </div>
-        <button class="download-btn" data-kind="standard" type="button">
-          Download
-        </button>
-      </div>
-
-      <div class="option">
-        <div class="option-icon mp3">MP3</div>
-        <div class="option-info">
-          <h3>Download MP3</h3>
-          <p>Audio only, when available</p>
-        </div>
-        <button class="download-btn green" data-kind="mp3" type="button">
-          Download
-        </button>
-      </div>
-    </section>
-
-    <div class="note">
-      Download availability and quality depend on the source video,
-      platform restrictions and permissions. Never enter your social
-      media password on a downloader website.
-    </div>
-  </section>
-
-  <section class="info">
-    <h2>How to Use</h2>
-    <ul>
-      <li>Copy a video link from a supported platform.</li>
-      <li>Tap Paste or paste the link manually.</li>
-      <li>Tap Check Video Link to validate the link format.</li>
-      <li>Choose a download option if a compatible service is available.</li>
-    </ul>
-    <p>
-      TooloraTools does not bypass private-video restrictions or
-      download protections.
-    </p>
-  </section>
+<p class="note">Please use a publicly accessible video link that you have permission to download. The next page currently provides the download interface; an actual download service must be connected separately.</p>
+</section>
 </main>
 
-<footer>
-  <p>© 2026 TooloraTools. All rights reserved.</p>
-  <a href="index.html">Back to Home</a>
-</footer>
+<footer>© 2026 TooloraTools. All rights reserved.</footer>
 
 <script>
-const urlInput = document.getElementById("videoUrl");
-const pasteBtn = document.getElementById("pasteBtn");
-const checkBtn = document.getElementById("checkBtn");
-const statusBox = document.getElementById("status");
-const results = document.getElementById("results");
+let selectedPlatform = "tiktok";
 
-let selectedPlatform = "auto";
-let currentUrl = "";
-let currentPlatform = "";
-
-function showStatus(message, type = "info") {
-  statusBox.textContent = message;
-  statusBox.className = "status show " + type;
+function choose(platform){
+  selectedPlatform = platform;
+  document.getElementById("tiktok").classList.toggle("active",platform==="tiktok");
+  document.getElementById("facebook").classList.toggle("active",platform==="facebook");
+  document.getElementById("error").style.display="none";
 }
 
-function clearStatus() {
-  statusBox.textContent = "";
-  statusBox.className = "status";
+function identifyPlatform(value){
+  try{
+    const u = new URL(value);
+    if(u.protocol!=="https:" && u.protocol!=="http:") return null;
+    const host = u.hostname.toLowerCase().replace(/^www\./,"");
+
+    if(host==="tiktok.com" || host.endsWith(".tiktok.com")) return "tiktok";
+    if(host==="facebook.com" || host.endsWith(".facebook.com") ||
+       host==="fb.watch" || host.endsWith(".fb.watch")) return "facebook";
+  }catch(e){}
+  return null;
 }
 
-function detectPlatform(value) {
-  try {
-    const parsed = new URL(value);
-    const host = parsed.hostname.toLowerCase().replace(/^www\./, "");
+function continueToDownload(){
+  const value = document.getElementById("videoUrl").value.trim();
+  const error = document.getElementById("error");
 
-    if (host === "tiktok.com" || host.endsWith(".tiktok.com")) {
-      return "TikTok";
-    }
-
-    if (
-      host === "facebook.com" ||
-      host.endsWith(".facebook.com") ||
-      host === "fb.watch"
-    ) {
-      return "Facebook";
-    }
-
-    return "";
-  } catch {
-    return "";
-  }
-}
-
-pasteBtn.addEventListener("click", async () => {
-  clearStatus();
-
-  try {
-    if (!navigator.clipboard || !navigator.clipboard.readText) {
-      throw new Error("Clipboard access unavailable");
-    }
-
-    const copiedText = await navigator.clipboard.readText();
-
-    if (!copiedText.trim()) {
-      showStatus("Your clipboard is empty. Copy a video link first.", "error");
-      return;
-    }
-
-    urlInput.value = copiedText.trim();
-    urlInput.focus();
-    results.classList.remove("show");
-  } catch {
-    urlInput.focus();
-    showStatus(
-      "Clipboard access was blocked by your browser. Press and hold the link box, then tap Paste.",
-      "error"
-    );
-  }
-});
-
-document.querySelectorAll(".platform").forEach(button => {
-  button.addEventListener("click", () => {
-    selectedPlatform = button.dataset.platform;
-
-    document.querySelectorAll(".platform").forEach(item => {
-      const active = item === button;
-      item.classList.toggle("selected", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-  });
-});
-
-checkBtn.addEventListener("click", () => {
-  clearStatus();
-  results.classList.remove("show");
-
-  const value = urlInput.value.trim();
-
-  if (!value) {
-    showStatus("Please paste a video link first.", "error");
-    urlInput.focus();
+  if(!value){
+    showError("Please paste a video link first.");
     return;
   }
 
-  const platform = detectPlatform(value);
+  const platform = identifyPlatform(value);
 
-  if (!platform) {
-    showStatus("Please enter a valid TikTok or Facebook URL.", "error");
+  if(!platform){
+    showError("This link is not recognized. Please enter a valid TikTok or Facebook link.");
     return;
   }
 
-  if (
-    selectedPlatform !== "auto" &&
-    selectedPlatform !== platform.toLowerCase()
-  ) {
-    showStatus(
-      "The link does not match the selected platform. Choose Auto Detect or the correct platform.",
-      "error"
-    );
+  if(platform !== selectedPlatform){
+    showError("This is a "+(platform==="tiktok"?"TikTok":"Facebook")+
+      " link. Please select the correct platform above.");
     return;
   }
 
-  currentUrl = value;
-  currentPlatform = platform;
+  window.location.href = "download.html?platform="+
+    encodeURIComponent(platform)+"&url="+encodeURIComponent(value);
+}
 
-  document.getElementById("resultTitle").textContent =
-    platform + " Download Options";
+function showError(message){
+  const error = document.getElementById("error");
+  error.textContent = message;
+  error.style.display = "block";
+}
 
-  document.getElementById("resultIntro").textContent =
-    "The link format is recognized. Actual download availability has not been checked.";
-
-  results.classList.add("show");
-
-  showStatus(
-    platform + " link recognized. The actual download service is not connected yet.",
-    "info"
-  );
-
-  results.scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-document.querySelectorAll("[data-kind]").forEach(button => {
-  button.addEventListener("click", () => {
-    if (!currentUrl || !currentPlatform) {
-      showStatus("Please check a video link first.", "error");
-      return;
-    }
-
-    showStatus(
-      "Download is not active yet. A compatible video-processing service must be connected before " +
-      button.dataset.kind + " downloads can work.",
-      "info"
-    );
-  });
-});
-
-urlInput.addEventListener("input", () => {
-  results.classList.remove("show");
-  clearStatus();
-  currentUrl = "";
-  currentPlatform = "";
-});
+async function pasteLink(){
+  const input = document.getElementById("videoUrl");
+  try{
+    input.value = await navigator.clipboard.readText();
+    input.focus();
+  }catch(e){
+    input.focus();
+    showError("Clipboard permission is unavailable. Press and hold the link box and choose Paste.");
+  }
+}
 </script>
 </body>
 </html>
